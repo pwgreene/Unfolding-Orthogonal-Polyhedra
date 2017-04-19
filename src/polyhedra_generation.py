@@ -87,11 +87,7 @@ if __name__ == "__main__":
     # FOR TESTING
 
     new_box = create_box([-1, 0, 0], 1, 1, 1)
-    create_fold_file("box.fold", new_box)
-    create_fold_file("box.fold", create_box([0, 0, 0], 1, 3, 5), append=True)
-    new_box = create_box([-2, 0, 0], 1, 1, 1)
-    create_fold_file("box.fold", new_box, append=True)
-    new_box = create_box([-3, 0, 0], 1, 1, 1)
-    create_fold_file("box.fold", new_box, append=True)
+    create_fold_file("../data/boxes.fold", new_box)
+    create_fold_file("../data/boxes.fold", create_box([0, 0, 0], 1, 3, 5), append=True)
     # corner, l, w, h, filename = sys.argv[1:6]
 
