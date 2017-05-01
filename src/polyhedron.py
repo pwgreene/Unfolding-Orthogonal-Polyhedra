@@ -138,4 +138,4 @@ class Polyhedron(object):
 
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    p.write_dual_graph("../data/dual_graph.fold")
+    print p.dual_graph
