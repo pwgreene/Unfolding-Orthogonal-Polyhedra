@@ -41,6 +41,7 @@ class Polyhedron(object):
         self.primal_graph = self.create_primal_graph()
         self.dual_graph = self.create_dual_graph()
         for c in self.components:
+            print "Component:"
             for f in [self.faces[i] for i in c]:
                 print f
         self.layers = self.get_layers()
