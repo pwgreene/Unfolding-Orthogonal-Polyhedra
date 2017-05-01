@@ -76,6 +76,7 @@ class Polyhedron(object):
             vertices = [np.array(vertices_coords[i]) for i in f]
             # determine the normal direction of the face
             direction = np.cross(vertices[1] - vertices[0], vertices[3] - vertices[0])
+            direction = direction.astype(np.float)
             direction /= np.linalg.norm(direction)
             direction_str = None
             if abs(direction[0]) > .9:
