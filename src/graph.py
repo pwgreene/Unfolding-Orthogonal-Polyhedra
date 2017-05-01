@@ -36,7 +36,7 @@ class Graph:
 
   # returns list of indicies of vertices connected to vertex i
   def get_connections(self, i):
-    return self.E[i]
+    return list(self.E[i])
   
   # returns list of vertices with indices from index_list
   def get_vertices(self, index_list):
@@ -60,6 +60,19 @@ class Graph:
     for j in edges:
       edges[j] = [e for e in edges[j] if e in vertex_list]
     return Graph(vertices, E_dict=edges)
+  
+  # returns a list of vertices reachable when starting from start (start is included in this dict)
+  def get_reachable(self, start):
+    visited = [start]
+    queue = self.get_connections(start)
+    while queue:
+      current = queue.pop()
+      if current in visited:
+        continue
+      else:
+        visited.append(current)
+        queue.extend(self.get_connections(current))
+    return visited
 
   def __str__(self):
     rep = ""
