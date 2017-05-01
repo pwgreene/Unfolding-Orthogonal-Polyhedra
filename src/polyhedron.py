@@ -1,6 +1,7 @@
 from graph import Graph
 from faces import Face
 import polyhedra_generation
+from component import Component
 import json
 import numpy as np
 
@@ -41,7 +42,19 @@ class Polyhedron(object):
         self.dual_graph = self.create_dual_graph()
         self.layers = self.get_layers()
         # TODO: initialize Components
-        self.components = None
+        all_faces = self.dual_graph.get_V()
+        component_graph = self.dual_graph.copy()
+        for i in xrange(len(self.layers) - 1):
+          faces_between = [key for key in all_faces if all_faces[key].between_layers(self.layers[i + 1], self.layers[i])]
+          subgraph_between = dual_graph.subgraph(faces_between)
+          for face in faces_between:
+            if face not in component_graph.get_V():
+              continue
+            connections = subgraph_between.get_reachable(face)
+            component_dual_graph = subgraph_between.subgraph(connections)
+            component = Component(component_dual_graph)
+            component_graph = component_graph.combine_vertices(connections, component)
+        self.components = component_graph
 
 
     def parse_fold_file(self, filename):
