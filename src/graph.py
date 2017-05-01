@@ -20,3 +20,10 @@ class Graph:
         # assumes bi-directional
         self.E[edge[0]].append(edge[1])
         self.E[edge[1]].append(edge[0])
+
+  def __str__(self):
+    rep = ""
+    for i in range(len(self.E)):
+      for j in range(len(self.E[i])):
+        rep += "(%s)->(%s)\n" % (self.V[i], self.V[self.E[i][j]])
+    return rep
