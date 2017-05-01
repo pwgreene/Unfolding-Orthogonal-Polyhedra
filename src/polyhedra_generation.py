@@ -61,7 +61,6 @@ def create_fold_file(filename, d, append=False):
         data["edges_vertices"].extend(d["edges_vertices"])
         data["faces_vertices"].extend(d["faces_vertices"])
         data["edges_assignment"].extend("B" for i in range(num_existing_edges))
-        print d
 
     else:
         # start with default stuff
@@ -83,11 +82,49 @@ def create_fold_file(filename, d, append=False):
         json.dump(data, f, ensure_ascii=True, indent=2)
 
 
+def combine_fold_files(file_a, file_b):
+    """
+    append data from file a to file b
+    :param file_a: filename (string)
+    :param file_b: filename (string)
+    :return: None
+    """
+    with open(file_a) as f_a:
+        data_a = json.load(f_a)
+    create_fold_file(file_b, data_a, append=True)
+
+
+def flip_faces(filename):
+    """
+    flip the normals of all faces in the FOLD file
+    :param filename: string
+    :return: None
+    """
+    with open(filename) as f:
+        data = json.load(f)
+        faces = data["faces_vertices"]
+        rev_faces = []
+        for face in faces:
+            rev_faces.append(face[::-1])
+        data["faces_vertices"] = rev_faces
+
+    # overwrite with newly created data
+    create_fold_file(filename, data, append=False)
+
+
 if __name__ == "__main__":
     # FOR TESTING
 
-    new_box = create_box([-1, 0, 0], 1, 1, 1)
-    create_fold_file("../data/boxes.fold", new_box)
-    create_fold_file("../data/boxes.fold", create_box([0, 0, 0], 1, 3, 5), append=True)
+    # new_box = create_box([-1, 0, 0], 1, 1, 1)
+    # create_fold_file("../data/boxes.fold", new_box)
+    # create_fold_file("../data/boxes.fold", create_box([0, 0, 0], 1, 3, 5), append=True)
     # corner, l, w, h, filename = sys.argv[1:6]
+    # flip_faces("../data/rect_box.fold")
+    empty = {"vertices_coords": [],
+             "faces_vertices": [],
+             "edges_vertices": []}
+    # combined_file = "../data/box_and_cube.fold"
+    # create_fold_file(combined_file, empty)  # init empty fold file
+    # combine_fold_files("../data/rect_box.fold", combined_file)
+    # combine_fold_files("../data/unit_cube_open.fold", combined_file)
 

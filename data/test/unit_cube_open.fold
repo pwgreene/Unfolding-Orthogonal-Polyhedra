@@ -1,0 +1,55 @@
+{
+  "file_spec":1,
+  "file_creator": "text editor",
+  "file_author": "Parker Greene",
+  "frame_title": "unit cube",
+  "file_classes": ["singleModel"],
+  "frame_classes": ["foldedForm"],
+  "frame_attributes": ["3D"],
+  "vertices_coords": [
+    [0, 0, 0],
+    [1, 0, 0],
+    [1, 1, 0],
+    [1, 1, 1],
+    [0, 1, 0],
+    [0, 1, 1],
+    [0, 0, 1],
+    [1, 0, 1]
+  ],
+  "faces_vertices": [
+    [0, 1, 7, 6],
+    [0, 4, 2, 1],
+    [0, 6, 5, 4],
+    [6, 7, 3, 5],
+    [7, 1, 2, 3]
+  ],
+  "edges_vertices": [
+    [0, 1],
+    [1, 7],
+    [7, 6],
+    [6, 0],
+    [0, 4],
+    [4, 2],
+    [2, 1],
+    [6, 5],
+    [5, 4],
+    [7, 3],
+    [2, 3],
+    [3, 5]
+  ],
+  "edges_assignment": [
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B",
+    "B"
+  ]
+}
