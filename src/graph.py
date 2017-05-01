@@ -2,33 +2,41 @@ import copy
 
 class Graph:
   
-  # Input V as a list of vertices
-  # Input exactly 1 of E or E_long_list (not both or none)
-  # E is edges as a list of lists where list i is the list of indices of vertices vertex i is connected to
-  # E_long_list is a list of all edges where an edge is a list of length 2 of the indices of the vertices it connects, edges are assumed bidirectional and should not be input twice (eg. if [0, 1] is given [1, 0] should not be)
-  def __init__(self, V, E=None, E_list=None):
-    if not E and not E_list:
+  # Input V as a list of vertices or a dictionary of label:vertex pairs
+  # Input exactly 1 of E, E_list or E_dict
+  # E is edges as a list of lists where list i is the list of indices of vertices vertex i is connected to (adjacency list)
+  # E_list is a list of all edges where an edge is a list of length 2 of the indices of the vertices it connects, edges are assumed bidirectional and should not be input twice (eg. if [0, 1] is given [1, 0] should not be)
+  # E_dict is dictionary where key is the label of the first vertex in the edge and the value is a list of vertex labels for vertices it is connected to
+  def __init__(self, V, E=None, E_list=None, E_dict=None):
+    if not E and not E_list and not E_dict:
       raise Exception("No edges inputted")
-    elif E and E_list:
+    elif sum(map(bool, [E, E_list, E_dict])) > 1:
       raise Exception("Can't input edges in multiple formats")
-    self.V = V
-    if E:
-      self.E = E
+    
+    if type(V) is list:
+      self.V = {i:V[i] for i in xrange(len(V))}
+    elif type(V) is dict:
+      self.V = V
     else:
-      self.E = []
-      for _ in xrange(len(V)):
-        self.E.append([])
+      raise Exception("Invalid value for V")
+    
+    if E:
+      self.E = {i:E[i] for i in xrange(len(E))}
+    elif E_list:
+      self.E = {i:[] for i in xrange(len(V))}
       for edge in E_list:
         # assumes bi-directional
         self.E[edge[0]].append(edge[1])
         self.E[edge[1]].append(edge[0])
+    else:
+      self.E = E_dict
 
   def get_V(self):
     return self.V
 
   # returns list of indicies of vertices connected to vertex i
   def get_connections(self, i):
-    return self.E[i]
+    return list(self.E[i])
   
   # returns list of vertices with indices from index_list
   def get_vertices(self, index_list):
@@ -38,22 +46,37 @@ class Graph:
     return copy.deepcopy(self)
 
   # deletes vertex i and all associated connections
-  # reindexes edges to reflect new vertex indexing
   def del_vertex(self, i):
     self.V.pop(i)
     self.E.pop(i)
-    for j in xrange(len(self.E)):
-      new_edge_list = []
-      for e in self.E[j]:
-        if e > i:
-          new_edge_list.append(e - 1)
-        elif e < i:
-          new_edge_list.append(e)
-      self.E[j] = new_edge_list
+    for j in self.E:
+      self.E[j] = [e for e in self.E[j] if e != i]
+
+  # returns the subgraph containing only vertices with labels in vertex_list
+  # returns a new graph object
+  def subgraph(self, vertex_list):
+    vertices = {key:self.V[key] for key in self.V if key in vertex_list}
+    edges = {key:self.E[key] for key in self.E if key in vertex_list}
+    for j in edges:
+      edges[j] = [e for e in edges[j] if e in vertex_list]
+    return Graph(vertices, E_dict=edges)
+  
+  # returns a list of vertices reachable when starting from start (start is included in this dict)
+  def get_reachable(self, start):
+    visited = [start]
+    queue = self.get_connections(start)
+    while queue:
+      current = queue.pop()
+      if current in visited:
+        continue
+      else:
+        visited.append(current)
+        queue.extend(self.get_connections(current))
+    return visited
 
   def __str__(self):
     rep = ""
-    for i in range(len(self.E)):
-      for j in range(len(self.E[i])):
-        rep += "{%s} -> {%s}\n" % (self.V[i], self.V[self.E[i][j]])
+    for i in self.E:
+      for j in self.E[i]:
+        rep += "{%s} -> {%s}\n" % (self.V[i], self.V[j])
     return rep

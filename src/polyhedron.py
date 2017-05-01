@@ -34,6 +34,9 @@ class Polyhedron(object):
 
         self.primal_graph = self.create_primal_graph()
         self.dual_graph = self.create_dual_graph()
+        self.layers = self.get_layers()
+        # TODO: initialize Components
+        self.components = None
 
 
     def parse_fold_file(self, filename):
@@ -108,6 +111,11 @@ class Polyhedron(object):
             edges.append(adjacent)
 
         return Graph(self.faces, E=edges)
+    
+    # returns a list of layers as a list of y-values
+    def get_layers(self):
+        y_values = [vertex[1] for vertex in self.vertices]
+        return list(set(y_values)).sort()
 
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/unit_cube.fold", "../data/boxes.fold"])
