@@ -53,6 +53,7 @@ class Graph:
       self.E[j] = [e for e in self.E[j] if e != i]
 
   # returns the subgraph containing only vertices with labels in vertex_list
+  # returns a new graph object
   def subgraph(self, vertex_list):
     vertices = {key:self.V[key] for key in self.V if key in vertex_list}
     edges = {key:self.E[key] for key in self.E if key in vertex_list}
