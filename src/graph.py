@@ -42,7 +42,7 @@ class Graph:
   def get_vertices(self, index_list):
     return [self.V[i] for i in index_list]
 
-  def copy():
+  def copy(self):
     return copy.deepcopy(self)
 
   # deletes vertex i and all associated connections
@@ -64,5 +64,5 @@ class Graph:
     rep = ""
     for i in self.E:
       for j in self.E[i]:
-        rep += "(%s)->(%s)\n" % (self.V[i], self.V[j])
+        rep += "{%s} -> {%s}\n" % (self.V[i], self.V[j])
     return rep
