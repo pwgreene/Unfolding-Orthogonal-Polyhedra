@@ -54,9 +54,20 @@ class Face(object):
           return False
       return True
     
-    # returns true if this face is between layers y=y and y=y_minus_1
+    # returns true if this face is between layers y=y and y=y_minus_1 (inclusive)
+    # if the face is entirely in layer y (resp. y_minus_1), its normal must be +y (resp. -y)
     # assumes y_minus_1 < y
     def between_layers(self, y, y_minus_1):
+      if self.in_layer(y):
+        if self.direction == '+y':
+          return True
+        else:
+          return False
+      elif self.in_layer(y_minus_1):
+        if self.direction == '-y':
+          return True
+        else:
+          return False
       for vertex in self.vertices:
         if vertex[1] < y_minus_1 or vertex[1] > y:
           return False
