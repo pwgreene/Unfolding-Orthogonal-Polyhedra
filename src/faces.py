@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Face(object):
 
     def __init__(self, vertices, direction):
@@ -20,6 +19,12 @@ class Face(object):
 
     def get_direction(self):
         return self.direction
+
+    def get_vertices(self, as_tuple=False):
+        if as_tuple:
+            return [tuple(self.vertices[i]) for i in range(len(self.vertices))]
+        else:  # as numpy arrays
+            return [self.vertices[i].copy() for i in range(len(self.vertices))]
 
     def get_direction_as_vector(self):
         sign = self.direction[0]

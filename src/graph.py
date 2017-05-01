@@ -51,3 +51,9 @@ class Graph:
           new_edge_list.append(e)
       self.E[j] = new_edge_list
 
+  def __str__(self):
+    rep = ""
+    for i in range(len(self.E)):
+      for j in range(len(self.E[i])):
+        rep += "(%s)->(%s)\n" % (self.V[i], self.V[self.E[i][j]])
+    return rep

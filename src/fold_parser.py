@@ -1,6 +1,7 @@
 import json
 import numpy as np
 from faces import Face
+from graph import Graph
 
 def parse_fold_file(filename):
     """
@@ -38,7 +39,27 @@ def parse_fold_file(filename):
         faces.append(Face(vertices, direction_str))
     return faces
 
+def create_dual_graph(faces):
+    """
+    creates a dual graph from a list of faces. Nodes are faces and edges exist between nodes if the two faces
+    are adjacent on the polyhedra
+    :param faces: list of Face objects
+    :return: Graph object
+    """
+    edges = []
+    for u in range(len(faces)):
+        adjacent = []
+        for v in range(u, len(faces)):
+            # check to see how many vertices are shared between face u and face v, 6 unique vertices means adjacent
+            if len(set(faces[u].get_vertices(as_tuple=True) + faces[v].get_vertices(as_tuple=True))) == 6:
+                adjacent.append(v)
+        edges.append(adjacent)
+
+    return Graph(faces, E=edges)
+
+
 if __name__ == "__main__":
     faces = parse_fold_file("../data/unit_cube.fold")
-    for f in faces:
-        print f
+    # for f in faces:
+    #     print f
+    print create_dual_graph(faces)
