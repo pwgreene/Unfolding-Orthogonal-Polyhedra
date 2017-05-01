@@ -53,6 +53,14 @@ class Face(object):
         if vertex[1] != y:
           return False
       return True
+    
+    # returns true if this face is between layers y=y and y=y_minus_1
+    # assumes y_minus_1 < y
+    def between_layers(self, y, y_minus_1):
+      for vertex in self.vertices:
+        if vertex[1] < y_minus_1 or vertex[1] > y:
+          return False
+      return True
 
     def divide_face(self, axis, ratio):
         """
