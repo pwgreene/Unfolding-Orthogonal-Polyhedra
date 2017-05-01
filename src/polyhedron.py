@@ -6,24 +6,34 @@ import numpy as np
 
 class Polyhedron(object):
 
-    def __init__(self, vertices=None, faces=None, filename=None):
+    def __init__(self, vertices=None, faces=None, filelist=None):
         """
-        initialize a polyhedron either with a list of vertices and faces, OR with a fold file filename
+        initialize a polyhedron either with a list of vertices and faces OR
+        a list of FOLD files where each file is a separate component of the polyhedron
         faces - list of Face objects
         faces_vertices - list of indices into self.vertices defining each face
         vertices - list of coordinates (np array) of each vertex
+        components - list of lists indices into self.faces where each list of indices defines a component
         """
-        if filename is not None:
-            self.faces, self.faces_vertices, self.vertices = self.parse_fold_file(filename)
-        elif vertices is not None and faces is not None:
+
+        if vertices is not None and faces is not None:
             self.faces = faces
             self.vertices = vertices
+        elif filelist is not None:
+            self.components = []
+            for f in filelist:
+                with open(f) as f_o:
+                    data = json.load(f_o)
+                    faces, faces_vertices, vertices = self.parse_fold_file(f)
+                    self.components.append([range(len(self.components), len(self.components)+len(faces))])
+                with open("tmp.fold", 'w') as tmp:
+                    json.dump(data, tmp, ensure_ascii=True, indent=2)
+            self.faces, self.faces_vertices, self.vertices = self.parse_fold_file("tmp.fold")
         else:
-            raise Exception("must pass in either both vertices and faces or just filename to constructor")
+            raise Exception("must pass in either both vertices and faces or filename(s) to constructor")
+
         self.primal_graph = self.create_primal_graph()
         self.dual_graph = self.create_dual_graph()
-        # TODO: initialize Components
-        self.components = None
 
 
     def parse_fold_file(self, filename):
@@ -100,5 +110,5 @@ class Polyhedron(object):
         return Graph(self.faces, E=edges)
 
 if __name__ == "__main__":
-    p = Polyhedron(filename="../data/unit_cube.fold")
-    print p.primal_graph
+    p = Polyhedron(filelist=["../data/unit_cube.fold", "../data/boxes.fold"])
+    print p.dual_graph

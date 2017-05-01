@@ -1,6 +1,7 @@
 import json
 import sys
 
+
 def create_box(corner, length, width, height):
     """
     create a rectangular box
@@ -35,7 +36,6 @@ def create_box(corner, length, width, height):
     return {"vertices_coords": vertices,
             "faces_vertices": faces,
             "edges_vertices": edges}
-
 
 
 def create_fold_file(filename, d, append=False):
