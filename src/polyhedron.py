@@ -55,7 +55,7 @@ class Polyhedron(object):
               continue
             connections = subgraph_between.get_reachable(face)
             component_dual_graph = subgraph_between.subgraph(connections)
-            component = Component(component_dual_graph)
+            component = Component(component_dual_graph, self.layers[i + 1], self.layers[i])
             component_graph = component_graph.combine_vertices(connections, component)
         self.components = component_graph
 
