@@ -47,6 +47,12 @@ class Face(object):
     def __str__(self):
         return ("(%s, %s, %s, %s) direction: "+self.direction) % tuple(self.vertices)
 
+    # returns true if this face is in layer y=y, returns false otherwise
+    def in_layer(self, y):
+      for vertex in self.vertices:
+        if vertex[1] != y:
+          return False
+      return True
 
     def divide_face(self, axis, ratio):
         """
