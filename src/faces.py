@@ -3,14 +3,15 @@ import numpy as np
 
 class Face(object):
 
-    def __init__(self, v1, v2, v3, v4, face_type, direction):
+    def __init__(self, vertices, face_type, direction):
         """
         initialize the face, vertices v1, v2, v3, v4 (np arrays) should be defined in ccw order
         edges of the face are (v1, v2), (v2, v3), (v3, v4), and (v4, v1)
+        vertices: list of vertex coordinates
         type: defines the type of face
         direction: +- x, +- y, or +- z (string)
         """
-        self.vertices = (v1.astype(float), v2.astype(float), v3.astype(float), v4.astype(float))
+        self.vertices = vertices
         self.type = face_type
         self.pricipal_directions = ["x", "y", "z"]
         if len(direction) == 1:
@@ -62,16 +63,16 @@ class Face(object):
                     mid = w1*self.vertices[0][i] + w2*self.vertices[1][i]
                     new_v1, new_v2 = self.vertices[1].copy(), self.vertices[2].copy()
                     new_v1[i], new_v2[i] = mid, mid
-                    return (Face(self.vertices[0], new_v1, new_v2, self.vertices[3], self.type, self.direction),
-                            Face(new_v1, self.vertices[1], self.vertices[2], new_v2, self.type, self.direction))
+                    return (Face([self.vertices[0], new_v1, new_v2, self.vertices[3]], self.type, self.direction),
+                            Face([new_v1, self.vertices[1], self.vertices[2], new_v2], self.type, self.direction))
                 else:  # second/fourth edges parallel to axis
                     mid = w1*self.vertices[1][i] + w2*self.vertices[2][i]
                     new_v2, new_v3 = self.vertices[2].copy(), self.vertices[3].copy()
                     # print new_v2, new_v3
                     new_v2[i], new_v3[i] = mid, mid
                     print new_v2, new_v3
-                    return (Face(self.vertices[0], self.vertices[1], new_v2, new_v3, self.type, self.direction),
-                            Face(self.vertices[3], new_v3, new_v2, self.vertices[2], self.type, self.direction))
+                    return (Face([self.vertices[0], self.vertices[1], new_v2, new_v3], self.type, self.direction),
+                            Face([self.vertices[3], new_v3, new_v2, self.vertices[2]], self.type, self.direction))
 
 
 if __name__ == "__main__":
@@ -80,7 +81,7 @@ if __name__ == "__main__":
     v_2 = np.array([1., 0., 0.])
     v_3 = np.array([1., 1., 0.])
     v_4 = np.array([0., 1., 0.])
-    f = Face(v_1, v_2, v_3, v_4, None, "+z")
+    f = Face([v_1, v_2, v_3, v_4], None, "+z")
     print f
     for face in f.divide_face("y", (1, 1)):
         print face
