@@ -1,5 +1,6 @@
 from graph import Graph
 from faces import Face
+import polyhedra_generation
 import json
 import numpy as np
 
@@ -21,13 +22,17 @@ class Polyhedron(object):
             self.vertices = vertices
         elif filelist is not None:
             self.components = []
-            for f in filelist:
-                with open(f) as f_o:
+            total_faces = 0
+            for f in range(len(filelist)):
+                with open(filelist[f]) as f_o:
                     data = json.load(f_o)
-                    faces, faces_vertices, vertices = self.parse_fold_file(f)
-                    self.components.append([range(len(self.components), len(self.components)+len(faces))])
-                with open("tmp.fold", 'w') as tmp:
-                    json.dump(data, tmp, ensure_ascii=True, indent=2)
+                    faces, faces_vertices, vertices = self.parse_fold_file(filelist[f])
+                    self.components.append(range(total_faces, total_faces+len(faces)))
+                    total_faces += len(faces)
+                if f == 0:
+                    polyhedra_generation.create_fold_file("tmp.fold", data)
+                else:
+                    polyhedra_generation.create_fold_file("tmp.fold", data, append=True)
             self.faces, self.faces_vertices, self.vertices = self.parse_fold_file("tmp.fold")
         else:
             raise Exception("must pass in either both vertices and faces or filename(s) to constructor")
@@ -91,7 +96,6 @@ class Polyhedron(object):
         # convert set of tuples to list of lists
         edges = list(edges)
         edges = [list(e) for e in edges]
-        print edges
 
         return Graph(self.vertices, E_list=edges)
 
@@ -111,6 +115,21 @@ class Polyhedron(object):
             edges.append(adjacent)
 
         return Graph(self.faces, E=edges)
+
+    def write_dual_graph(self, filename):
+        """
+        write dual graph to FOLD format in linakge form for visualization
+        :param filename: string
+        :return: None
+        """
+        data_out = {"vertices_coords": [],
+                "edges_vertices": []}
+        for u in self.dual_graph.E:
+            center = self.dual_graph.get_V()[u].get_center()
+            data_out["vertices_coords"].append([x for x in center])
+            for v in self.dual_graph.E[u]:
+                data_out["edges_vertices"].append([u, v])
+        polyhedra_generation.create_fold_file(filename, data_out, frame_class="linkage")
     
     # returns a list of layers as a list of y-values
     def get_layers(self):
@@ -118,5 +137,5 @@ class Polyhedron(object):
         return list(set(y_values)).sort()
 
 if __name__ == "__main__":
-    p = Polyhedron(filelist=["../data/unit_cube.fold", "../data/boxes.fold"])
-    print p.dual_graph
+    p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    p.write_dual_graph("../data/dual_graph.fold")

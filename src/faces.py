@@ -93,6 +93,15 @@ class Face(object):
                             Face([self.vertices[3], new_v3, new_v2, self.vertices[2]], self.direction))
 
 
+    def get_center(self):
+        """
+        :return: average of all the vertices
+        """
+        avg = np.zeros((3,))
+        for v in self.vertices:
+            avg += .25*v
+        return avg
+
 if __name__ == "__main__":
     # TODO: test this with rectangular faces
     v_1 = np.array([0., 0., 0.])

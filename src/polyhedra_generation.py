@@ -38,7 +38,7 @@ def create_box(corner, length, width, height):
             "edges_vertices": edges}
 
 
-def create_fold_file(filename, d, append=False):
+def create_fold_file(filename, d, append=False, frame_class="foldedForm"):
     """
     create a json object out of a given python dictionary
     :param filename: string
@@ -69,7 +69,7 @@ def create_fold_file(filename, d, append=False):
                 "file_author": "pwgreene",
                 "frame_title": filename,
                 "file_classes": ["singleModel"],
-                "frame_classes": ["foldedForm"],
+                "frame_classes": [frame_class],
                 "frame_attributes": ["3D"],
                 }
         data.update(d)
