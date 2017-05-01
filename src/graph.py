@@ -74,6 +74,21 @@ class Graph:
         queue.extend(self.get_connections(current))
     return visited
 
+  # combines vertices with label in vertex_list and represents combo as new_vertex with vertex_list[0] as the label
+  # returns a new graph object
+  def combine_vertices(self, vertex_list, new_vertex):
+    vertices = {key:self.V[key] for key in self.V if key not in vertex_list}
+    vertices[vertex_list[0]] = new_vertex
+    new_vertex_edges = [self.E[vertex] for vertex in vertex_list]
+    new_vertex_edges_flattened = list(set([e for sublist in new_vertex_edges for e in sublist if e not in vertex_list]))
+    edges = {key:self.E[key] for key in self.E if key not in vertex_list}
+    for j in edges:
+      edges[j] = [e for e in edges[j] if e not in vertex_list]
+    for i in new_vertex_edges_flattened:
+      edges[i].append(vertex_list[0])
+    edges[vertex_list[0]] = new_vertex_edges_flattened
+    return Graph(vertices, E_dict=edges)
+
   def __str__(self):
     rep = ""
     for i in self.E:
