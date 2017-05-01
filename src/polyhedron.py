@@ -40,13 +40,16 @@ class Polyhedron(object):
 
         self.primal_graph = self.create_primal_graph()
         self.dual_graph = self.create_dual_graph()
+        for c in self.components:
+            for f in [self.faces[i] for i in c]:
+                print f
         self.layers = self.get_layers()
-        # TODO: initialize Components
+
         all_faces = self.dual_graph.get_V()
         component_graph = self.dual_graph.copy()
         for i in xrange(len(self.layers) - 1):
           faces_between = [key for key in all_faces if all_faces[key].between_layers(self.layers[i + 1], self.layers[i])]
-          subgraph_between = dual_graph.subgraph(faces_between)
+          subgraph_between = self.dual_graph.subgraph(faces_between)
           for face in faces_between:
             if face not in component_graph.get_V():
               continue
@@ -147,8 +150,8 @@ class Polyhedron(object):
     # returns a list of layers as a list of y-values
     def get_layers(self):
         y_values = [vertex[1] for vertex in self.vertices]
-        return list(set(y_values)).sort()
+        return sorted(list(set(y_values)))
 
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    print p.dual_graph
+    # print p.dual_graph

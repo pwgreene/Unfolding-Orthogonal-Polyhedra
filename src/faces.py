@@ -113,13 +113,27 @@ class Face(object):
             avg += .25*v
         return avg
 
+    def __eq__(self, other):
+        """Override the default Equals behavior"""
+        if not isinstance(other, self.__class__):
+            return False
+
+        this_vertices = {tuple(self.vertices[i]) for i in range(len(self.vertices))}
+        other_vertices = {tuple(other.vertices[i]) for i in range(len(other.vertices))}
+
+        if len(this_vertices.union(other_vertices)) == len(this_vertices) and self.direction == other.direction:
+            return True
+        else:
+            return False
+
 if __name__ == "__main__":
     # TODO: test this with rectangular faces
     v_1 = np.array([0., 0., 0.])
     v_2 = np.array([1., 0., 0.])
     v_3 = np.array([1., 1., 0.])
     v_4 = np.array([0., 1., 0.])
-    f = Face([v_1, v_2, v_3, v_4], "+z")
-    print f
-    for face in f.divide_face("y", (1, 1)):
-        print face
+    f1 = Face([v_1, v_2, v_3, v_4], "+z")
+    f2 = Face([v_4, v_3, v_2, v_1], "-z")
+    f3 = Face([v_4, v_3, v_2, v_1], "+z")
+    assert f1 != f2
+    assert f1 == f3
