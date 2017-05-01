@@ -41,7 +41,7 @@ class Polyhedron(object):
         self.primal_graph = self.create_primal_graph()
         self.dual_graph = self.create_dual_graph()
         self.layers = self.get_layers()
-        # TODO: initialize Components
+        
         all_faces = self.dual_graph.get_V()
         component_graph = self.dual_graph.copy()
         for i in xrange(len(self.layers) - 1):
