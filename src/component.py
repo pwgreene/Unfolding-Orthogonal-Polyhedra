@@ -1,7 +1,7 @@
 class Component:
   
   # face_graph is the graph with faces as vertices of the component
-  def __init__(self, face_graph):
+  def __init__(self, face_graph, y, y_minus_1):
     self.full_graph = face_graph
     faces = self.full_graph.get_V()
     
