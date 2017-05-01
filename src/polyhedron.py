@@ -80,7 +80,7 @@ class Polyhedron(object):
         edges = [list(e) for e in edges]
         print edges
 
-        return Graph(self.vertices, E_long_list=edges)
+        return Graph(self.vertices, E_list=edges)
 
     def create_dual_graph(self):
         """
