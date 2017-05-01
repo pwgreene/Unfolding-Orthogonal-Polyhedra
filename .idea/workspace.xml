@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0663cd3-f991-4ae9-a3da-571ffc01472b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/faces.py" afterPath="$PROJECT_DIR$/src/faces.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/polyhedron.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fold_parser.py" afterPath="$PROJECT_DIR$/src/fold_parser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/graph.py" afterPath="$PROJECT_DIR$/src/graph.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/rect_with_cube.fold" afterPath="$PROJECT_DIR$/data/rect_with_cube.fold" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Unfolding-Orthogonal-Polyhedra.iws" />
@@ -50,13 +48,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fold_parser.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fold_parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fold_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76744187">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="40" selection-end-column="16" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polyhedron.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.6666667">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +75,8 @@
       <file leaf-file-name="graph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.777778">
-              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+            <state vertical-scroll-proportion="-6.6666665">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -93,6 +103,7 @@
         <option value="$PROJECT_DIR$/src/faces.py" />
         <option value="$PROJECT_DIR$/src/graph.py" />
         <option value="$PROJECT_DIR$/src/fold_parser.py" />
+        <option value="$PROJECT_DIR$/src/polyhedron.py" />
       </list>
     </option>
   </component>
@@ -191,7 +202,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.fold_parser">
+  <component name="RunManager" selected="Python.polyhedron">
     <configuration default="false" name="polyhedra_generation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -239,6 +250,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Unfolding-Orthogonal-Polyhedra" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/fold_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="polyhedron" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Unfolding-Orthogonal-Polyhedra" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/polyhedron.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -365,16 +393,18 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.polyhedra_generation" />
       <item index="1" class="java.lang.String" itemvalue="Python.faces" />
       <item index="2" class="java.lang.String" itemvalue="Python.fold_parser" />
+      <item index="3" class="java.lang.String" itemvalue="Python.polyhedron" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.fold_parser" />
-        <item index="1" class="java.lang.String" itemvalue="Python.faces" />
-        <item index="2" class="java.lang.String" itemvalue="Python.polyhedra_generation" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.polyhedron" />
+        <item index="1" class="java.lang.String" itemvalue="Python.fold_parser" />
+        <item index="2" class="java.lang.String" itemvalue="Python.faces" />
+        <item index="3" class="java.lang.String" itemvalue="Python.polyhedra_generation" />
       </list>
     </recent_temporary>
   </component>
@@ -449,20 +479,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fold_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="40" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/graph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.777778">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+        <state vertical-scroll-proportion="-6.6666665">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fold_parser.py">
+    <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76744187">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.6666667">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

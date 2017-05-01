@@ -25,5 +25,5 @@ class Graph:
     rep = ""
     for i in range(len(self.E)):
       for j in range(len(self.E[i])):
-        rep += "(%s)->(%s)\n" % (self.V[i], self.V[self.E[i][j]])
+        rep += "{%s} -> {%s}\n" % (self.V[i], self.V[self.E[i][j]])
     return rep
