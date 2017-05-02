@@ -5,7 +5,7 @@ class Component:
     self.full_graph = face_graph
     faces = self.full_graph.get_V()
     
-    prot_faces = [key for key in faces if faces[key].in_layer(y) or faces[key].in_layer(y_minus_1)]
+    prot_faces = [key for key in faces if not faces[key].in_layer(y) and not faces[key].in_layer(y_minus_1)]
     self.prot = self.full_graph.subgraph(prot_faces)
     
     back_rim_faces = [key for key in faces if faces[key].in_layer(y)]
