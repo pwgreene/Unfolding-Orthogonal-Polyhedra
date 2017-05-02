@@ -2,12 +2,13 @@ import numpy as np
 
 class Face(object):
 
-    def __init__(self, vertices, direction):
+    def __init__(self, vertices, direction, sort_vertices=True):
         """
         initialize the face, vertices v1, v2, v3, v4 (np arrays) should be defined in ccw order
         edges of the face are (v1, v2), (v2, v3), (v3, v4), and (v4, v1)
         vertices: list of vertex coordinates
         type: defines the type of face
+        sort_vertices: (bool) sort list of vertices by self.sorted_vertices or not. default=True
         direction: +- x, +- y, or +- z (string)
         """
         self.vertices = vertices
@@ -17,6 +18,8 @@ class Face(object):
         else:
             self.direction = direction
         self.center = self.compute_center()
+        if sort_vertices:
+            self.vertices = self.sorted_vertices()
 
     def get_direction(self):
         return self.direction
@@ -113,6 +116,42 @@ class Face(object):
         for v in self.vertices:
             avg += .25*v
         return avg
+
+    def sorted_vertices(self):
+        """
+        Return new list of vertices such that first vertex is the closet (resp. ccw) vertex
+        and smallest y-value (still listed in ccw order).
+        :return: new list of vertices. Doesn't modify self.vertices!
+        """
+        if self.direction == "+z":
+            first = sorted(self.vertices, key=lambda z: (z[0], z[1]))[0]
+        elif self.direction == "-z":
+            first = sorted(self.vertices, key=lambda z: (-z[0], z[1]))[0]
+        elif self.direction == "+x":
+            first = sorted(self.vertices, key=lambda x: (-x[2], x[1]))[0]
+        elif self.direction == "-x":
+            first = sorted(self.vertices, key=lambda x: (x[2], x[1]))[0]
+        elif self.direction == "+y":
+            first = sorted(self.vertices, key=lambda y: (-y[0], y[2]))[0]
+        elif self.direction == "-y":
+            first = sorted(self.vertices, key=lambda y: (y[0], y[2]))[0]
+        else:
+            raise TypeError("no direction inputted")
+
+        for i in range(len(self.vertices)):
+            if np.array_equal(first, self.vertices[i]):
+                return self.vertices[i:] + self.vertices[:i]
+
+
+    def is_on_face(self, vertex):
+        """
+        check if the vertex is on the face
+        :param vertex: np array, tuple, or list of coordinates
+        :return: (bool) True if vertex on face, False o.w.
+        """
+        # TODO: implement this
+        return False
+
 
     def __eq__(self, other):
         """Override the default Equals behavior"""

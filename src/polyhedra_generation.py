@@ -74,9 +74,10 @@ def create_fold_file(filename, d, append=False, frame_class="foldedForm"):
                 }
         data.update(d)
         # we're not dealing with foldings, so edge assignments don't matter
-        num_edges = len(d["edges_vertices"])
-        edges_assignment = {"edges_assignment": ["B" for x in range(num_edges)]}
-        data.update(edges_assignment)
+        if "edges_vertices" in d:
+            num_edges = len(d["edges_vertices"])
+            edges_assignment = {"edges_assignment": ["B" for x in range(num_edges)]}
+            data.update(edges_assignment)
 
     with open(filename, 'w') as f:
         json.dump(data, f, ensure_ascii=True, indent=2)
