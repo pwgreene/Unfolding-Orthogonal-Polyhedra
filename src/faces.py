@@ -16,6 +16,7 @@ class Face(object):
             self.direction = "+"+direction
         else:
             self.direction = direction
+        self.center = self.compute_center()
 
     def get_direction(self):
         return self.direction
@@ -104,7 +105,7 @@ class Face(object):
                             Face([self.vertices[3], new_v3, new_v2, self.vertices[2]], self.direction))
 
 
-    def get_center(self):
+    def compute_center(self):
         """
         :return: average of all the vertices
         """
