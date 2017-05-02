@@ -60,6 +60,7 @@ class Polyhedron(object):
             component_graph = component_graph.combine_vertices(connections, component)
         self.components = component_graph
 
+
     def parse_fold_file(self, filename):
         """
         parse the fold file and return a list of faces
