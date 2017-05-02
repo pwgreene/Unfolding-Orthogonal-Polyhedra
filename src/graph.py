@@ -8,9 +8,7 @@ class Graph:
   # E_list is a list of all edges where an edge is a list of length 2 of the indices of the vertices it connects, edges are assumed bidirectional and should not be input twice (eg. if [0, 1] is given [1, 0] should not be)
   # E_dict is dictionary where key is the label of the first vertex in the edge and the value is a list of vertex labels for vertices it is connected to
   def __init__(self, V, E=None, E_list=None, E_dict=None):
-    if not E and not E_list and not E_dict:
-      raise Exception("No edges inputted")
-    elif sum(map(bool, [E, E_list, E_dict])) > 1:
+    if sum(map(bool, [E, E_list, E_dict])) > 1:
       raise Exception("Can't input edges in multiple formats")
     
     if type(V) is list:
@@ -28,8 +26,10 @@ class Graph:
         # assumes bi-directional
         self.E[edge[0]].append(edge[1])
         self.E[edge[1]].append(edge[0])
-    else:
+    elif E_dict:
       self.E = E_dict
+    else:
+      self.E = {i:[] for i in xrange(len(V))}
 
   def get_V(self):
     return self.V
