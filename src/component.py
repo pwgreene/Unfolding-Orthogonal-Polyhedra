@@ -224,7 +224,8 @@ class Component:
     # cut 3 - go around entire protrusion starting from f_0
 
 
-    self.write_cut_path([cut_1, cut_2, cut_3])
+    # self.write_cut_path([cut_1, cut_2])
+    self.write_strip(cut_3, [])
 
   def write_cut_path(self, paths):
     vertices = []
@@ -240,8 +241,17 @@ class Component:
         faces.append([len(vertices), len(vertices)+1, len(vertices)+2, len(vertices)+3])
         edges.append([len(vertices), len(vertices)+1])
         vertices.extend([list(x) for x in [u, v, v1, u1]])
-    polyhedra_generation.create_fold_file("path.fold", {"vertices_coords": vertices, "faces_vertices":faces,
+    polyhedra_generation.create_fold_file("cuts.fold", {"vertices_coords": vertices, "faces_vertices":faces,
                                                           "edges_vertices": edges})
+  def write_strip(self, path1, path2):
+    vertices = [list(x) for x in path1]
+    vertices.extend([list(x) for x in path2])
+    faces = []
+
+    for i in range(len(path1) - 1):
+      faces.append([i, i+1, len(path1)+i+1, len(path1)+i])
+    polyhedra_generation.create_fold_file("path.fold", {"vertices_coords": vertices, "faces_vertices":faces,
+                                                          "edges_vertices": []}, append=True)
 
 
 
