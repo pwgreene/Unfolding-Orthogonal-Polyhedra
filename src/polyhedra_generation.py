@@ -116,9 +116,12 @@ def flip_faces(filename):
 if __name__ == "__main__":
     # FOR TESTING
 
-    # new_box = create_box([-1, 0, 0], 1, 1, 1)
-    # create_fold_file("../data/boxes.fold", new_box)
-    # create_fold_file("../data/boxes.fold", create_box([0, 0, 0], 1, 3, 5), append=True)
+    new_box = create_box([0, 0, 0], 1, 2, 2)
+    create_fold_file("../data/boxes6.fold", new_box)
+    create_fold_file("../data/boxes6.fold", create_box([-2, 2, 0], 4, 1, 2), append=True)
+    create_fold_file("../data/boxes6.fold", create_box([0, 1, 2], 2, 6, 4), append=True)
+    # create_fold_file("../data/boxes4.fold", create_box([1, 1, 1], 3, 1, 1), append=True)
+    # create_fold_file("../data/boxes.fold", create_box([-1, -2, -3], 2, 1, 1), append=True)
     # corner, l, w, h, filename = sys.argv[1:6]
     # flip_faces("../data/rect_box.fold")
     empty = {"vertices_coords": [],

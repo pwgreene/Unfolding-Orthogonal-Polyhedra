@@ -310,7 +310,7 @@ class Component:
       strip_depth = layer_width * i  # how far the closest cut goes into the protrusion
       for cut_num in range(num_cuts):
         # first and second point
-        cut_depth = strip_depth + (layer_width/num_cuts)*cut_num
+        cut_depth = strip_depth + (layer_width/(num_cuts-1))*cut_num
         if not (i == 0 and cut_num == 0):
           print bridge_face.direction
           if bridge_face.direction == "+z":
@@ -359,7 +359,7 @@ class Component:
       # bridge_index = child.bridge_face() # TODO: define this - should be bridge between this component and its children
       bridge_index = B2[i]
       bridge_face = self.full_graph.get_V()[bridge_index]
-      print bridge_face.vertices
+
       width = abs(bridge_face.vertices[0][0] - bridge_face.vertices[1][0])
       # num_cuts = child.num_children * 2 + 1  # number of strips in child + 1
       num_cuts = 5
@@ -368,7 +368,7 @@ class Component:
 
       strip_depth = layer_width * i # how far the closest cut goes into the protrusion
       for cut_num in range(num_cuts):
-        cut_depth = strip_depth + (layer_width/num_cuts)*cut_num
+        cut_depth = strip_depth + (layer_width/(num_cuts-1))*cut_num
         cut_depth2 = layer_width + cut_depth
         if not (i == 0 and cut_num == 0):
           if bridge_face.direction == "+z":
@@ -384,9 +384,9 @@ class Component:
         f_k = self.protrusion_path[-1]
         f_k_face = self.full_graph.get_V()[f_k]
         if f_k_face.direction == "+z":
-          f_k_strip_width = abs(f_k_face.vertices[0][0] - f_k_face.vertices[1][0]) / (num_cuts - 1)
+          f_k_strip_width = abs(f_k_face.vertices[0][0] - f_k_face.vertices[1][0]) / float(len(B2))
         else:  # -x direction
-          f_k_strip_width = abs(f_k_face.vertices[0][2] - f_k_face.vertices[1][2])
+          f_k_strip_width = abs(f_k_face.vertices[0][2] - f_k_face.vertices[1][2]) / float(len(B2))
         starting_face_index = [j for j in range(len(self.protrusion_path)) if self.protrusion_path[j] == bridge_index].pop()
 
         path_index = starting_face_index
@@ -403,15 +403,16 @@ class Component:
 
         # go down f_k
         if f_k_face.direction == "+z":
-          x = f_k_face.vertices[3][0] + (f_k_strip_width * i) + f_k_strip_width/num_cuts * cut_num
+          x = f_k_face.vertices[3][0] + (f_k_strip_width * i) + f_k_strip_width/(num_cuts - 1) * cut_num
         else:  # -z direction
-          x = f_k_face.vertices[3][0] - (f_k_strip_width * i) - f_k_strip_width/num_cuts * cut_num
+          x = f_k_face.vertices[3][0] - (f_k_strip_width * i) - f_k_strip_width/(num_cuts - 1) * cut_num
         y = next_p[1]
         z = next_p[2]
 
         cut_paths[cut_num].append(np.array([x, y, z]))
-        y = f_k_face.vertices[3][1] - cut_depth2
-        cut_paths[cut_num].append(np.array([x, y, z]))
+        y = f_k_face.vertices[3][1] - cut_depth2  # move down into protrusion along f_k
+        if (cut_num != 0):
+          cut_paths[cut_num].append(np.array([x, y, z]))
 
         cur_face_index = self.protrusion_path[-1]
         # last_face = None
@@ -423,9 +424,21 @@ class Component:
           path_index -= 1
           cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
           # last_face = cur_face
+
+        # go down to parent bridge along f_0
+        if f_0_face.direction == "+z":
+          x = f_0_face.vertices[0][0] + (f_0_strip_width * i) + f_0_strip_width/num_cuts * cut_num
+        else:
+          x = f_0_face.vertices[0][0] - (f_0_strip_width * i) - f_0_strip_width/num_cuts * cut_num
+        z = next_p[2]
+
+        cut_paths[cut_num].append(np.array([x, y, z]))
+        y = f_0_face.vertices[0][1]
+        cut_paths[cut_num].append(np.array([x, y, z]))
+        all_cuts.extend(cut_paths)
         print cut_paths[cut_num]
 
-    # self.write_cut_path(all_cuts)
+    self.write_cut_path(all_cuts)
     # for p in all_cuts:
     #   print p
 
@@ -434,15 +447,17 @@ class Component:
     edges = []
     faces = []
     for path in paths:
+      last_u, last_v = None, None
       for i in range(len(path)-1):
         u, v = path[i].astype(float), path[i+1].astype(float)
-        # u1 = u.copy()
+
         u1 = np.array([u[0]+.01, u[1]+.02, u[2]+.01])
-        # v1 = v.copy()
         v1 = np.array([v[0]+.01, v[1]+.02, v[2]+.01])
+
         faces.append([len(vertices), len(vertices)+1, len(vertices)+2, len(vertices)+3])
         edges.append([len(vertices), len(vertices)+1])
         vertices.extend([list(x) for x in [u, v, v1, u1]])
+        last_u, last_v = u, v
     polyhedra_generation.create_fold_file("cuts.fold", {"vertices_coords": vertices, "faces_vertices":faces,
                                                           "edges_vertices": edges})
   def write_strip(self, path1, path2):
