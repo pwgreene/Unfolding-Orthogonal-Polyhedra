@@ -458,7 +458,7 @@ class Component:
         edges.append([len(vertices), len(vertices)+1])
         vertices.extend([list(x) for x in [u, v, v1, u1]])
         last_u, last_v = u, v
-    polyhedra_generation.create_fold_file("cuts.fold", {"vertices_coords": vertices, "faces_vertices":faces,
+    polyhedra_generation.create_fold_file("../out/cuts.fold", {"vertices_coords": vertices, "faces_vertices":faces,
                                                           "edges_vertices": edges})
   def write_strip(self, path1, path2):
     vertices = [list(x) for x in path1]
@@ -467,7 +467,7 @@ class Component:
 
     for i in range(len(path1) - 1):
       faces.append([i, i+1, len(path1)+i+1, len(path1)+i])
-    polyhedra_generation.create_fold_file("path.fold", {"vertices_coords": vertices, "faces_vertices":faces,
+    polyhedra_generation.create_fold_file("../out/path.fold", {"vertices_coords": vertices, "faces_vertices":faces,
                                                           "edges_vertices": []}, append=True)
 
 
