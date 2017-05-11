@@ -341,9 +341,9 @@ class Component:
         # go to middle of f_0, then down to parent bridge
         if not (i == 0 and cut_num == 0):
           if f_0_face.direction == "+z":
-            x = f_0_face.vertices[1][0] - (f_0_strip_width * i) - f_0_strip_width/num_cuts * cut_num
+            x = f_0_face.vertices[1][0] - (f_0_strip_width * i) - f_0_strip_width/(num_cuts-1) * cut_num
           else:
-            x = f_0_face.vertices[1][0] + (f_0_strip_width * i) + f_0_strip_width/num_cuts * cut_num
+            x = f_0_face.vertices[1][0] + (f_0_strip_width * i) + f_0_strip_width/(num_cuts-1) * cut_num
           y = next_p[1]
           z = next_p[2]
 
@@ -362,7 +362,7 @@ class Component:
 
       width = abs(bridge_face.vertices[0][0] - bridge_face.vertices[1][0])
       # num_cuts = child.num_children * 2 + 1  # number of strips in child + 1
-      num_cuts = 5
+      num_cuts = 3  # TODO: get number of cuts for children
       cut_width = float(width) / (num_cuts - 1)
       cut_paths = [[] for _ in range(num_cuts)]
 
@@ -427,22 +427,31 @@ class Component:
 
         # go down to parent bridge along f_0
         if f_0_face.direction == "+z":
-          x = f_0_face.vertices[0][0] + (f_0_strip_width * i) + f_0_strip_width/num_cuts * cut_num
+          x = f_0_face.vertices[0][0] + (f_0_strip_width * i) + f_0_strip_width/(num_cuts-1) * cut_num
         else:
-          x = f_0_face.vertices[0][0] - (f_0_strip_width * i) - f_0_strip_width/num_cuts * cut_num
+          x = f_0_face.vertices[0][0] - (f_0_strip_width * i) - f_0_strip_width/(num_cuts-1) * cut_num
         z = next_p[2]
 
         cut_paths[cut_num].append(np.array([x, y, z]))
         y = f_0_face.vertices[0][1]
         cut_paths[cut_num].append(np.array([x, y, z]))
         all_cuts.extend(cut_paths)
-        print cut_paths[cut_num]
 
-    self.write_cut_path(all_cuts)
+    # self.write_cut_path_as_fold(all_cuts)
+    self.write_cut_path(all_cuts, "../out/cuts.txt")
     # for p in all_cuts:
     #   print p
 
-  def write_cut_path(self, paths):
+  def write_cut_path(self, paths, filename):
+    n_paths = len(paths)
+    with open(filename, 'w') as f:
+      f.write("%s\n" % n_paths)
+      for path in paths:
+        f.write("%s\n" % len(path))
+        for point in path:
+          f.write("%s %s %s\n" % (point[0], point[1], point[2]))
+
+  def write_cut_path_as_fold(self, paths):
     vertices = []
     edges = []
     faces = []
