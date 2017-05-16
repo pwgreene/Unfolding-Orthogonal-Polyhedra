@@ -18,7 +18,7 @@ class Component:
     # TODO: initialize the total number of strips in this component
     # self.num_strips = ?
 
-    self.f_0 = 11  #TODO: find f_0 (bridge z+ direction)
+    self.f_0 = 12  #TODO: find f_0 (bridge z+ direction)
 
     back_rim_faces = [key for key in faces if faces[key].in_layer(y)]
     self.back_rim = self.full_graph.subgraph(back_rim_faces)
@@ -38,14 +38,17 @@ class Component:
       # TODO: define the children bridge faces
       self.num_children = 1
       self.children = []
+      self.is_root = True
     except Exception as e:
       print "error:",e
     if self.num_children == 0:
-      self.strip_paths_leaf()
+      self.unfold_strip_leaf()
     elif self.is_root:
-      pass  #TODO implement unfolding of root
+      #TODO implement unfolding of root
+      self.unfold_strip_root()
     else:
       self.unfold_strip_intermediate()
+
 
   def unfolding_path(self):
     """
@@ -268,23 +271,23 @@ class Component:
     cut_3.append(next_p)
 
     # TODO: uncomment this after defining self.parent face or equivalent
-    # if not self.parent_face.in_layer(self.y_minus_1):
-    #   # flip orientation
-    #   new_cut1, new_cut2, new_cut3 = [], [], []
-    #   for v in cut_1:
-    #     v_new = np.array([v[0], self.depth - v[1], v[2]])
-    #     new_cut1.append(v_new)
-    #   for v in cut_2:
-    #     v_new = np.array([v[0], self.depth - v[1], v[2]])
-    #     new_cut2.append(v_new)
-    #   for v in cut_3:
-    #     v_new = np.array([v[0], self.depth - v[1], v[2]])
-    #     new_cut3.append(v_new)
-    #   cut_1, cut_2, cut_3 = new_cut1, new_cut2, new_cut3
+    if True:#not self.parent_face.in_layer(self.y_minus_1):
+      # flip orientation
+      new_cut1, new_cut2, new_cut3 = [], [], []
+      for v in cut_1:
+        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        new_cut1.append(v_new)
+      for v in cut_2:
+        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        new_cut2.append(v_new)
+      for v in cut_3:
+        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        new_cut3.append(v_new)
+      cut_1, cut_2, cut_3 = new_cut1, new_cut2, new_cut3
 
 
     # print cut_2
-    # self.write_cut_path([cut_1, cut_2, cut_3])
+    self.write_cut_path([cut_1, cut_2, cut_3], "../out/cuts.txt")
     # self.write_strip(cut_3, [])
 
   def unfold_strip_intermediate(self):
@@ -305,10 +308,11 @@ class Component:
       else:
         B2.append(child)
 
-    B1 = [14]
-    B2 = [13, 15]
+    B1 = [13, 15]
+    B2 = [14]
     B1_cuts = 3 # for testing
     B2_cuts = 3
+    assert (set(B1).isdisjoint(set(B2)))
 
     # sort B1, B2 by distance from f_k, respective to ccw direction around protrusion
     # B1 = sorted(B1, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
@@ -516,9 +520,9 @@ class Component:
         else:
           y = f_k_face.vertices[3][1] - cut_depth2
           cur_face_index = self.protrusion_path[-1]
-        if (cut_num != 0):
-          cut_paths[cut_num].append(np.array([x, y, z]))
+        cut_paths[cut_num].append(np.array([x, y, z]))
 
+        # go along until reaching f_0
         while cur_face_index != self.f_0:
           cur_face = self.full_graph.get_V()[cur_face_index]
           if flip_sides:
@@ -563,25 +567,210 @@ class Component:
   def unfold_strip_root(self):
     f_0_vertices = self.full_graph.get_V()[self.f_0].vertices
 
-    #num_cuts = self.num_leaves + 1 #TODO: define this correctly - there are 6 strips but cuts come together, so only 4 cuts (3 pairs + L(Q_1))
+    #num_cuts = self.num_leaves*2 + 1 #TODO: define this correctly - there are 6 strips but cuts come together, so only 4 cuts (3 pairs + L(Q_1))
+    num_cuts = 13
+    # num_cuts_on_connector = self.num_leaves + 1
+    num_cuts_on_connector = 7
 
-    num_cuts = 4
-    width = abs(f_0_vertices[0][0] - f_0_vertices[1][0])
     cut_paths = [[] for cut_num in range(num_cuts)]
+    # bridge_index = self.child_bridge  # TODO
+    bridge_index = self.f_0
+    bridge_face = self.full_graph.get_V()[bridge_index]
+
+    flip_sides = False  # define direction to move
+
+    if flip_sides:  # connector is flipped
+      self.f_i, self.f_j = self.f_j, self.f_i
+
+    f_i_face = self.full_graph.get_V()[self.f_i]
+    # strip width only depends on number of cuts on connector (num leaves + 1)
+    f_i_strip_width = abs(f_i_face.vertices[0][0] - f_i_face.vertices[1][0])/float(num_cuts_on_connector - 2)
+    print f_i_strip_width
 
     for cut_num in range(num_cuts):
+      cut_width = abs(bridge_face.vertices[0][0] - bridge_face.vertices[1][0]) / float(num_cuts - 1)
+      cut_depth = ((self.depth/2.)/(num_cuts-1))*cut_num
+
       # start at f_0 and go down to depth
-      cut_width = float(width) / (num_cuts - 1)
-      cut_depth = ((width/2.)/(num_cuts-1))*cut_num
       if not (cut_num == 0):
-        if self.f_0.direction == "+z":
-          cut_point = np.array([self.f_0.vertices[3][0] + cut_width * cut_num,
-                                self.f_0.vertices[3][1], self.f_0.vertices[3][2]])
-        elif self.f_0.direction == "-z":
-          cut_point = np.array([self.f_0.vertices[3][0] - cut_width * cut_num,
-                                self.f_0.vertices[3][1], self.f_0.vertices[3][2]])
+        if bridge_face.direction == "+z":
+          if flip_sides:
+            cut_point = np.array([bridge_face.vertices[1][0] - cut_width * cut_num,
+                                  bridge_face.vertices[1][1], bridge_face.vertices[1][2]])
+          else:
+            cut_point = np.array([bridge_face.vertices[3][0] + cut_width * cut_num,
+                                  bridge_face.vertices[3][1], bridge_face.vertices[3][2]])
+        elif bridge_face.direction == "-z":
+          if flip_sides:
+            cut_point = np.array([bridge_face.vertices[1][0] + cut_width * cut_num,
+                                  bridge_face.vertices[1][1], bridge_face.vertices[1][2]])
+          else:
+            cut_point = np.array([bridge_face.vertices[3][0] - cut_width * cut_num,
+                                  bridge_face.vertices[3][1], bridge_face.vertices[3][2]])
+
         cut_paths[cut_num].append(cut_point)
-        cut_paths[cut_num].append(np.array([cut_point[0], cut_point[1] + cut_depth, cut_point[2]]))
+        if flip_sides:
+          y = cut_point[1] + cut_depth
+        else:
+          y = cut_point[1] - cut_depth
+        cut_paths[cut_num].append(np.array([cut_point[0], y, cut_point[2]]))
+
+      if flip_sides:
+        f_1 = self.protrusion_path[-1]
+      else:
+        f_1 = self.protrusion_path[1]
+
+      starting_face_index = [j for j in range(len(self.protrusion_path)) if self.protrusion_path[j] == bridge_index].pop()
+
+      path_index = starting_face_index
+      cur_face_index = self.protrusion_path[path_index]
+
+      while cur_face_index != f_1:
+        cur_face = self.full_graph.get_V()[cur_face_index]
+        if flip_sides:
+          next_p = np.array([cur_face.vertices[1][0], cur_face.vertices[1][1] + cut_depth, cur_face.vertices[1][2]])
+        else:
+          next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1] - cut_depth, cur_face.vertices[3][2]])
+        cut_paths[cut_num].append(next_p)
+        if flip_sides:
+          path_index += 1
+        else:
+          path_index -= 1
+        cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
+
+      f_1_face = self.full_graph.get_V()[f_1]
+      if f_1_face.direction == "+z":
+        f_1_strip_width = abs(f_1_face.vertices[0][0] - f_1_face.vertices[1][0]) / float(num_cuts-1)
+      else:  # -x direction
+        f_1_strip_width = abs(f_1_face.vertices[0][2] - f_1_face.vertices[1][2]) / float(num_cuts-1)
+      print f_1, f_1_strip_width, num_cuts
+
+      # go down f_1
+      if f_1_face.direction == "+z":
+        if flip_sides:
+          x = f_1_face.vertices[1][0] - f_1_strip_width * cut_num#(num_cuts-cut_num-1)
+        else:
+          x = f_1_face.vertices[3][0] + f_1_strip_width * cut_num
+        z = next_p[2]
+
+
+      elif f_1_face.direction == "-z":
+        if flip_sides:
+          x = f_1_face.vertices[1][0] + f_1_strip_width * cut_num#(num_cuts-cut_num-1)
+        else:
+          x = f_1_face.vertices[3][0] - f_1_strip_width * cut_num
+        z = next_p[2]
+      elif f_1_face.direction == "+x":
+        if flip_sides:
+          z = f_1_face.vertices[0][2] - f_1_strip_width * (num_cuts-cut_num-1)
+        else:
+          z = f_1_face.vertices[2][2] + f_1_strip_width * (num_cuts-cut_num-1)
+        x = next_p[0]
+      else:
+        if flip_sides:
+          z = f_1_face.vertices[0][2] + f_1_strip_width * (num_cuts-cut_num-1)
+        else:
+          z = f_1_face.vertices[2][2] - f_1_strip_width * (num_cuts-cut_num-1)
+        x = next_p[0]
+
+      y = next_p[1]
+
+      cut_paths[cut_num].append(np.array([x, y, z]))
+
+      if flip_sides:
+        y += self.depth/2.
+      else:
+        y -= self.depth/2.
+
+      cut_paths[cut_num].append(np.array([x, y, z]))
+
+      #continue to f_j, then stop half the cuts
+      if not f_1_face.direction in ["+x", "-x"]:
+        if flip_sides:
+          path_index += 1
+        else:
+          path_index -= 1
+      cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
+
+      while cur_face_index != self.f_j:
+        cur_face = self.full_graph.get_V()[cur_face_index]
+        if flip_sides:
+          next_p = np.array([cur_face.vertices[1][0], y, cur_face.vertices[1][2]])
+        else:
+          next_p = np.array([cur_face.vertices[3][0], y, cur_face.vertices[3][2]])
+        cut_paths[cut_num].append(next_p)
+        if flip_sides:
+          path_index += 1
+        else:
+          path_index -= 1
+        cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
+
+      if 0 < cut_num < num_cuts_on_connector:
+        # follow ~half of cuts along to f_i then connector and piece them together with others
+        while cur_face_index != self.f_i:
+          cur_face = self.full_graph.get_V()[cur_face_index]
+          if flip_sides:
+            next_p = np.array([cur_face.vertices[1][0], y, cur_face.vertices[1][2]])
+          else:
+            next_p = np.array([cur_face.vertices[3][0], y, cur_face.vertices[3][2]])
+          cut_paths[cut_num].append(next_p)
+          if flip_sides:
+            path_index += 1
+          else:
+            path_index -= 1
+          cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
+
+        cur_face = self.full_graph.get_V()[cur_face_index]
+        # go to correct width, then down connector
+        if cur_face.direction == "+z":
+          if flip_sides:
+            x = cur_face.vertices[1][0] - f_i_strip_width * (cut_num-1)#(num_cuts-cut_num-1)
+          else:
+            x = cur_face.vertices[3][0] + f_i_strip_width * (cut_num-1)
+
+        elif cur_face.direction == "-z":
+          if flip_sides:
+            x = cur_face.vertices[1][0] + f_i_strip_width * (cut_num-1)#(num_cuts-cut_num-1)
+          else:
+            x = cur_face.vertices[3][0] - f_i_strip_width * (cut_num-1)
+        z = cur_face.vertices[0][2]
+        cut_paths[cut_num].append(np.array([x, y, z]))
+
+        # to connector edge
+        if flip_sides:
+          y = f_i_face.vertices[3][1]
+        else:
+          y = f_i_face.vertices[0][1]
+        cut_paths[cut_num].append(np.array([x, y, z]))
+
+        # down connector
+        f_j_face = self.full_graph.get_V()[self.f_j]
+        if flip_sides:
+          z = f_j_face.vertices[3][2]
+        else:
+          z = f_j_face.vertices[1][2]
+        cut_paths[cut_num].append(np.array([x, y, z]))
+
+        # up f_j, then connect to other cuts
+        if flip_sides:
+          y = f_j_face.vertices[3][1] - (self.depth/2.)/(num_cuts-1)*(cut_num-1)
+        else:
+          y = f_j_face.vertices[1][1] + (self.depth/2.)/(num_cuts-1)*(cut_num-1)
+        cut_paths[cut_num].append(np.array([x, y, z]))
+
+        if flip_sides:
+          x = f_j_face.vertices[3][0]
+        else:
+          x = f_j_face.vertices[1][0]
+        cut_paths[cut_num].append(np.array([x, y, z]))
+
+    # finally, check to see we connected the cuts
+    self.write_cut_path(cut_paths, "../out/cuts.txt")
+    print "total_cuts:", len(cut_paths)
+    for cut_num in range(1, num_cuts_on_connector):
+      if not np.allclose(cut_paths[cut_num][-1], cut_paths[num_cuts-cut_num][-1]):
+        raise Exception("%s in cut %s is not equal to %s in cut %s" %
+                        (cut_paths[cut_num][-1], cut_num+1, cut_paths[num_cuts-cut_num][-1], num_cuts-cut_num+1))
 
 
 
