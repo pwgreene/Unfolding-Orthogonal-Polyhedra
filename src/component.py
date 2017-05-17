@@ -6,8 +6,7 @@ class Component:
   
   # face_graph is the graph with faces as vertices of the component
   def __init__(self, face_graph, y, y_minus_1, is_root=False):
-    self.num_children = 1
-    self.is_root = is_root
+    self.cuts = []
     self.y_minus_1 = y_minus_1
     self.y = y
     self.full_graph = face_graph
@@ -28,28 +27,6 @@ class Component:
     self.front_rim = self.full_graph.subgraph(front_rim_faces)
 
     self.depth = abs(y - y_minus_1)
-
-    '''
-    try:
-      # self.connector_path is list of indices into full graph, where f_i is first element and f_j is last
-      self.f_i = 9
-      self.protrusion_path = self.unfolding_path()[:-1]
-      self.connector_path = self.find_connector()
-      self.f_j = self.connector_path[-1]
-      # TODO: define the children bridge faces
-      self.num_children = 1
-      self.children = []
-      self.is_root = True
-    except Exception as e:
-      print "error:",e
-    if self.num_children == 0:
-      self.unfold_strip_leaf()
-    elif self.is_root:
-      #TODO implement unfolding of root
-      self.unfold_strip_root()
-    else:
-      self.unfold_strip_intermediate()
-    '''
 
 
   def compute_protrusion_path(self, f_0):
@@ -148,19 +125,22 @@ class Component:
     cut_1.append(f_0_vertices[0])
     cut_2.append((f_0_vertices[0]+f_0_vertices[1])/2.0)
 
+    f_0_face = self.full_graph.get_V()[f_0]
+    if f_0_face.direction == "-z":  # flip connector
+      self.f_i, self.f_j = self.f_j, self.f_i
+
     # go along protrusion until hitting f_j
+    print "f_i", self.f_i
     # FIRST TURN
     path_index = 0
     cur_face_index = self.protrusion_path[path_index]
-    last_face = None  # to avoid adding unnecessary vertices to cut if staying on same plane
     while cur_face_index != self.f_j:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], cur_face.vertices[0][1] + self.depth/2.0, cur_face.vertices[0][2]])
-      if last_face is None or cur_face.direction != last_face.direction:
-        cut_1.append(next_p)
+      cut_1.append(next_p)
       path_index += 1
       cur_face_index = self.protrusion_path[path_index]
-      last_face = cur_face
+
 
     # first side of f_j
     cur_face = self.full_graph.get_V()[cur_face_index]
@@ -176,27 +156,25 @@ class Component:
 
     # SECOND/THIRD TURN
     cur_face_index = self.protrusion_path[path_index]
-    last_face = None
     while cur_face_index != self.f_i:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
-      if last_face is None or cur_face.direction != last_face.direction:
-        cut_1.append(next_p)
+      cut_1.append(next_p)
       path_index += 1
       cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
-      last_face = cur_face
 
-    print cur_face
+
     cur_face = self.full_graph.get_V()[cur_face_index]
-    print cur_face
     next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
     cut_1.append(next_p)
 
+
     # FOURTH TURN - go along connector
-    f = self.connector_path[-1]
+    f = self.f_j
     cur_face = self.full_graph.get_V()[f]
     next_p = np.array([cur_face.vertices[2][0], cur_face.vertices[2][1], cur_face.vertices[2][2]])
     cut_1.append(next_p)
+
 
     # second cut
     cut_2.append(np.array([cut_2[0][0], cut_2[0][1] + .25*self.depth, cut_2[0][2]]))
@@ -204,21 +182,16 @@ class Component:
     # FIRST TURN, go until hitting f_k (face before f_0)
     path_index = 1
     cur_face_index = self.protrusion_path[path_index]
-    last_face = self.full_graph.get_V()[cur_face_index]
     while cur_face_index != f_0:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], cur_face.vertices[0][1] + .25*self.depth, cur_face.vertices[0][2]])
-      if last_face is None or cur_face.direction != last_face.direction:
-        cut_2.append(next_p)
+      cut_2.append(next_p)
       path_index += 1
       cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
-      last_face = cur_face
 
     # SECOND TURN
     next_p = np.array([(next_p[0]+f_0_vertices[0][0])/2.0, next_p[1], (next_p[2]+f_0_vertices[0][2])/2.0])
     cut_2.append(next_p)
-
-
 
     next_p = np.array([next_p[0], next_p[1]+self.depth/2.0, next_p[2]])
     cut_2.append(next_p)
@@ -230,16 +203,16 @@ class Component:
     # THIRD TURN - go from f_0 to f_i
     path_index = 0
     cur_face_index = self.protrusion_path[path_index]
-    last_face = self.full_graph.get_V()[cur_face_index]
     while cur_face_index != self.f_i:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], next_p[1], cur_face.vertices[0][2]])
-      if last_face is None or cur_face.direction != last_face.direction:
-        cut_2.append(next_p)
+      cut_2.append(next_p)
       path_index += 1
       cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
-      last_face = cur_face
 
+    if cur_face.direction == "-x":
+      next_p = np.array([next_p[0], next_p[1], cur_face.vertices[1][2]])
+      cut_2.append(next_p)
     # cross f_i
     path_index += 1
     cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
@@ -248,21 +221,33 @@ class Component:
     cut_2.append(next_p)
 
     # FOURTH TURN - go down along connector
-    f = self.connector_path[1]
     cur_face = self.full_graph.get_V()[f]
-    next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
+    if f_0_face.direction == "-z":
+      f = self.connector_path[1]
+      next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], next_p[2]])
+    else:
+      f = self.connector_path[1]
+      next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
+
     cut_2.append(next_p)
-
-
-    f = self.connector_path[-1]
     cur_face = self.full_graph.get_V()[f]
-    next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
-    cut_2.append(next_p)
+
+    if f_0_face.direction == "-z":
+      next_p = np.array([cur_face.vertices[2][0], cur_face.vertices[2][1], cur_face.vertices[2][2]])
+      cut_2.append(next_p)
+    else:
+      next_p = np.array([cur_face.vertices[3][0], cur_face.vertices[3][1], cur_face.vertices[3][2]])
+      cut_2.append(next_p)
+
 
     # FIFTH TURN - back to f_i from f_j
     # find index of f_j in prot_path - NOTE: not always necessary if connector touches protrusion on 3 sides
     path_index = [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == self.f_j].pop()
     cur_face_index = self.protrusion_path[path_index]
+    # if f_0_face.direction == "-z":
+    #   stop_face = self.f_j
+    # else:
+    #   stop_face = self.f_i
     while cur_face_index != self.f_i:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], next_p[1], cur_face.vertices[0][2]])
@@ -303,8 +288,9 @@ class Component:
 
 
     # print cut_2
-    self.write_cut_path([cut_1, cut_2, cut_3], "../out/cuts.txt")
+    # self.write_cut_path([cut_1, cut_2, cut_3], "../out/cuts.txt")
     # self.write_strip(cut_3, [])
+    self.cuts = [cut_1, cut_2, cut_3]
 
   def unfold_strip_intermediate(self, child_faces, child_face_directions, f_0, parent_face_direction,
                                 num_leaves_children):
@@ -596,6 +582,7 @@ class Component:
     self.write_cut_path(all_cuts, "../out/cuts.txt")
     # for p in all_cuts:
     #   print p
+    self.cuts = all_cuts
 
   def unfold_strip_root(self, f_0, child_direction, num_leaves):
 
@@ -807,7 +794,7 @@ class Component:
       if not np.allclose(cut_paths[cut_num][-1], cut_paths[num_cuts-cut_num][-1]):
         raise Exception("%s in cut %s is not equal to %s in cut %s" %
                         (cut_paths[cut_num][-1], cut_num+1, cut_paths[num_cuts-cut_num][-1], num_cuts-cut_num+1))
-
+    self.cuts = cut_paths
 
 
   def write_cut_path(self, paths, filename):
