@@ -262,7 +262,9 @@ class Polyhedron(object):
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
     c = p.component_graph.get_V()[5]
-    c.unfold_strip_intermediate([15], ["+y"], 11, "-y", [4])
+    # c.unfold_strip_leaf(11, "-y")
+    # c.unfold_strip_intermediate([13, 15, 14], ["+y", "+y", "+y"], 11, "+y", [4, 4, 2])
+    c.unfold_strip_root(12, "-y", 2)
     p.write_to_off("../out/poly.off")
     #c1 = p.component_graph.get_V()[0]
     #c2 = p.component_graph.get_V()[5]
