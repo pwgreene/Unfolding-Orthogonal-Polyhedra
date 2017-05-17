@@ -130,7 +130,7 @@ class Polyhedron(object):
 
     def write_dual_graph(self, filename):
         """
-        write dual graph to FOLD format in linakge form for visualization
+        write dual graph to FOLD format in linkage form for visualization
         :param filename: string
         :return: None
         """
@@ -148,5 +148,27 @@ class Polyhedron(object):
         y_values = [vertex[1] for vertex in self.vertices]
         return sorted(list(set(y_values)))
 
+    def write_to_off(self, out_filename):
+        """
+         output this polyhedron as an .off file
+        :param out_filename: (str) filename of output .off file
+        :return: None
+        """
+        nv, nt = len(self.vertices), len(self.faces)*2  # will split each face into 2 triangles
+        tri = []  # list of triangles (indices into vertex array)
+        for v1, v2, v3, v4 in self.faces_vertices:
+            tri.append([v1, v2, v3])
+            tri.append([v1, v3, v4])
+        with open(out_filename, 'w') as out:
+            out.write("OFF\n")
+            out.write("%s %s 0\n" % (nv, nt))
+            for v in self.vertices:
+                out.write("%s %s %s\n" % (v[0], v[1], v[2]))
+            for f in tri:
+                out.write("3   %s %s %s\n" % (f[0], f[1], f[2]))
+        print "wrote %s vertices and %s faces to %s" % (nv, nt, out_filename)
+
+
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    p.write_to_off("../out/poly.off")

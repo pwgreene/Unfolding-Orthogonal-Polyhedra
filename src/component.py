@@ -18,7 +18,7 @@ class Component:
     # TODO: initialize the total number of strips in this component
     # self.num_strips = ?
 
-    self.f_0 = 12  #TODO: find f_0 (bridge z+ direction)
+    self.f_0 = 11  #TODO: find f_0 (bridge z+ direction)
 
     back_rim_faces = [key for key in faces if faces[key].in_layer(y)]
     self.back_rim = self.full_graph.subgraph(back_rim_faces)
@@ -310,7 +310,7 @@ class Component:
 
     B1 = [13, 15]
     B2 = [14]
-    B1_cuts = 3 # for testing
+    B1_cuts = 5 # for testing
     B2_cuts = 3
     assert (set(B1).isdisjoint(set(B2)))
 
@@ -318,7 +318,7 @@ class Component:
     # B1 = sorted(B1, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
     # B2 = sorted(B2, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
     # self.parent_face = ??? TODO
-    flip_sides = True#not self.parent_face.in_layer(self.y_minus_1)
+    flip_sides = False#not self.parent_face.in_layer(self.y_minus_1)
     if flip_sides: # reverse orientation with respect to paper's description
       B1, B2 = B2[::-1], B1[::-1]
     cuts_so_far = 0  #keeps track of number of cuts going back to parent
@@ -568,16 +568,17 @@ class Component:
     f_0_vertices = self.full_graph.get_V()[self.f_0].vertices
 
     #num_cuts = self.num_leaves*2 + 1 #TODO: define this correctly - there are 6 strips but cuts come together, so only 4 cuts (3 pairs + L(Q_1))
-    num_cuts = 13
+    num_cuts = 3
     # num_cuts_on_connector = self.num_leaves + 1
-    num_cuts_on_connector = 7
+    num_cuts_on_connector = 2
 
     cut_paths = [[] for cut_num in range(num_cuts)]
     # bridge_index = self.child_bridge  # TODO
     bridge_index = self.f_0
     bridge_face = self.full_graph.get_V()[bridge_index]
 
-    flip_sides = False  # define direction to move
+    # flip_sides = self.parent.in_layer(self.y_minus_1)
+    flip_sides = True  # define direction to move
 
     if flip_sides:  # connector is flipped
       self.f_i, self.f_j = self.f_j, self.f_i
@@ -767,6 +768,7 @@ class Component:
     # finally, check to see we connected the cuts
     self.write_cut_path(cut_paths, "../out/cuts.txt")
     print "total_cuts:", len(cut_paths)
+    # if self.num_leaves != 1:
     for cut_num in range(1, num_cuts_on_connector):
       if not np.allclose(cut_paths[cut_num][-1], cut_paths[num_cuts-cut_num][-1]):
         raise Exception("%s in cut %s is not equal to %s in cut %s" %
