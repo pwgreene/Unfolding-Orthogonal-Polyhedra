@@ -117,16 +117,16 @@ if __name__ == "__main__":
     # FOR TESTING
 
     file = "../data/the_box.fold"
-    C0 = create_box([-1, 2, 7], 3, 1, 2)
-    create_fold_file(file, C0)
+    # C0 = create_box([-1, 2, 7], 3, 1, 2)
+    # create_fold_file(file, C0)
 
     C1 = create_box([1, 1, -1], 4, 1, 9)
-    create_fold_file(file, C1, append=True)
+    create_fold_file(file, C1)
 
-    C2 = create_box([0, 0, 4], 5, 1, 3)
+    C2 = create_box([-1, 0, 4], 5, 1, 3)
     create_fold_file(file, C2, append=True)
 
-    C3 = create_box([0, -1, 5], 3, 1, 1)
+    C3 = create_box([-2, -1, 5], 4, 1, 1)
     create_fold_file(file, C3, append=True)
 
     # C4 = create_box([0, 0, 2], 8, 1, 1)
