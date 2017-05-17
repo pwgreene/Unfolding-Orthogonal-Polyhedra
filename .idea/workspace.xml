@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0663cd3-f991-4ae9-a3da-571ffc01472b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/cuts.txt" afterPath="$PROJECT_DIR$/out/cuts.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/poly.off" afterPath="$PROJECT_DIR$/out/poly.off" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedra_generation.py" afterPath="$PROJECT_DIR$/src/polyhedra_generation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedron.py" afterPath="$PROJECT_DIR$/src/polyhedron.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/the_box.fold" afterPath="$PROJECT_DIR$/data/the_box.fold" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tmp.fold" afterPath="$PROJECT_DIR$/src/tmp.fold" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tmp2.fold" afterPath="$PROJECT_DIR$/src/tmp2.fold" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Unfolding-Orthogonal-Polyhedra.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="polyhedra_generation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="polyhedra_generation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7398844">
+            <state vertical-scroll-proportion="0.0">
               <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -86,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polyhedron.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="polyhedron.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.6965318">
               <caret line="383" column="8" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="8" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -102,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -142,8 +136,8 @@
         <option value="$PROJECT_DIR$/src/faces.py" />
         <option value="$PROJECT_DIR$/src/component.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
-        <option value="$PROJECT_DIR$/src/polyhedron.py" />
         <option value="$PROJECT_DIR$/src/polyhedra_generation.py" />
+        <option value="$PROJECT_DIR$/src/polyhedron.py" />
       </list>
     </option>
   </component>
@@ -852,20 +846,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="383" column="8" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -874,10 +858,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7398844">
+        <state vertical-scroll-proportion="0.0">
           <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="133" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6965318">
+          <caret line="383" column="8" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

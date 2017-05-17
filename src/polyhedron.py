@@ -278,11 +278,11 @@ class Polyhedron(object):
           break
         if c not in remaining:
           continue
-        remaining.remove(c)
         component = self.component_graph.get_vertex(c)
         bridge = self.get_bridge(root_node.component, component)
         if not bridge:
           continue
+        remaining.remove(c)
         c_node = ComponentNode(component)
         child, remaining = self.create_unfolding_subtree(c_node, remaining)
         child.add_parent_bridge(bridge[1])
@@ -382,4 +382,3 @@ if __name__ == "__main__":
     #p = Polyhedron(filelist=["../data/boxes2.fold"])
     #p = Polyhedron(filelist=["../data/the_box.fold"])
     pass
-
