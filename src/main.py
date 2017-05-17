@@ -14,7 +14,7 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         f_0 = root.parent_bridge[-1]
         print "f_0", f_0
         print "bridge:", root.parent_bridge
-        bridge_normal = polyhedron.faces[f_0].direction
+        bridge_normal = polyhedron.faces[root.parent_bridge[1]].direction
         # check direction of parent component
         if bridge_normal == "+y":
             parent_direction = "+y"
@@ -73,8 +73,7 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
             print child_faces
             print child_face_directions
             print child_leaves
-            print num_leaves
-            print num_leaves_children
+            print "f_0", f_0
             print "------"
         # bridge_cuts.append(((f_0, root.parent), num_leaves))
         root.f_0 = f_0

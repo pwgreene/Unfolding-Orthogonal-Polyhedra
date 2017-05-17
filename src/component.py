@@ -305,7 +305,7 @@ class Component:
     """
 
     self.compute_protrusion_path(f_0)
-    print "protrusion path",  self.protrusion_path
+    print "protrusion path",  self.protrusion_path, f_0
 
     B1 = []
     B2 = []
@@ -332,7 +332,7 @@ class Component:
     B1 = sorted(B1, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
     B2 = sorted(B2, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
 
-    flip_sides = parent_face_direction == "+y"
+    flip_sides = parent_face_direction == "-y"
     if flip_sides: # reverse orientation with respect to paper's description
       B1, B2 = B2[::-1], B1[::-1]
     cuts_so_far = 0  #keeps track of number of cuts going back to parent
@@ -343,13 +343,12 @@ class Component:
     # total_strips = (B1_cuts-1)*len(B1) + (B2_cuts-1)*len(B2)
     total_strips = sum(num_leaves_children)*2
 
-    strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(total_strips)
+    strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[1][0])/float(total_strips)
     print "widths", strip_width_to_parent, total_strips
 
     layer_width = float(self.depth) / (len(B1) + 2*len(B2))
     for i in range(len(B1)):
-      # child = B1[i]
-      # bridge_index = child.bridge_face() # TODO: define this - should be bridge between this component and its children
+
       bridge_index = B1[i]
       bridge_face = self.full_graph.get_V()[bridge_index]
 
@@ -490,18 +489,19 @@ class Component:
             cut_paths[cut_num].append(np.array([cut_point[0], cut_point[1] - cut_depth, cut_point[2]]))
 
         # continue to f_k
+
         if flip_sides:
           f_k = self.protrusion_path[1]
         else:
           f_k = self.protrusion_path[-1]
 
         f_k_face = self.full_graph.get_V()[f_k]
-        if f_k_face.direction == "+z":
+        if f_k_face.direction == "+z" or f_k_face.direction == "-z":
           f_k_strip_width = abs(f_k_face.vertices[0][0] - f_k_face.vertices[1][0]) / float(len(B2))
         else:  # -x direction
           f_k_strip_width = abs(f_k_face.vertices[0][2] - f_k_face.vertices[1][2]) / float(len(B2))
         starting_face_index = [j for j in range(len(self.protrusion_path)) if self.protrusion_path[j] == bridge_index].pop()
-
+        print "f_k", f_k, f_k_strip_width
         path_index = starting_face_index
         cur_face_index = self.protrusion_path[path_index]
 
@@ -570,6 +570,9 @@ class Component:
         z = next_p[2]
 
         cut_paths[cut_num].append(np.array([x, y, z]))
+        print "x", x, cuts_so_far, cut_num, strip_width_to_parent
+        # if cut_num == 2:
+        #   cut_paths[cut_num].append(np.array([0, 0, 0]))
         if flip_sides:
           y = f_0_face.vertices[3][1]
         else:
