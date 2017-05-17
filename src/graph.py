@@ -41,7 +41,11 @@ class Graph:
   # returns list of vertices with indices from index_list
   def get_vertices(self, index_list):
     return [self.V[i] for i in index_list]
-
+  
+  # returns vertex with inputted index
+  def get_vertex(self, index):
+    return self.V[index]
+  
   def copy(self):
     return copy.deepcopy(self)
 

@@ -9,6 +9,7 @@ class Component:
     self.num_children = 1
     self.is_root = is_root
     self.y_minus_1 = y_minus_1
+    self.y = y
     self.full_graph = face_graph
     faces = self.full_graph.get_V()
 
@@ -29,6 +30,7 @@ class Component:
     self.depth = abs(y - y_minus_1)
 
     # if is_leaf:
+    '''
     try:
       # self.connector_path is list of indices into full graph, where f_i is first element and f_j is last
       self.f_i = 9
@@ -48,6 +50,7 @@ class Component:
       self.unfold_strip_root()
     else:
       self.unfold_strip_intermediate()
+    '''
 
 
   def unfolding_path(self):
@@ -812,7 +815,11 @@ class Component:
       faces.append([i, i+1, len(path1)+i+1, len(path1)+i])
     polyhedra_generation.create_fold_file("../out/path.fold", {"vertices_coords": vertices, "faces_vertices":faces,
                                                           "edges_vertices": []}, append=True)
+  def get_faces(self):
+    return [face for face in self.full_graph.get_V()]
 
+  def get_face(self, face):
+    return self.full_graph.get_V()[face]
 
 
   def __str__(self):

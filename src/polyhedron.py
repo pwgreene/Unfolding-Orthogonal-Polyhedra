@@ -2,6 +2,7 @@ from graph import Graph
 from faces import Face
 import polyhedra_generation
 from component import Component
+from component_node import ComponentNode
 import json
 import numpy as np
 
@@ -54,8 +55,8 @@ class Polyhedron(object):
                 component_dual_graph = subgraph_between.subgraph(connections)
                 component = Component(component_dual_graph, self.layers[i + 1], self.layers[i])
                 component_graph = component_graph.combine_vertices(connections, component)
-        self.components = component_graph
-
+        self.component_graph = component_graph
+        self.unfolding_tree = self.create_unfolding_tree()
 
     def parse_fold_file(self, filename):
         """
@@ -147,6 +148,95 @@ class Polyhedron(object):
     def get_layers(self):
         y_values = [vertex[1] for vertex in self.vertices]
         return sorted(list(set(y_values)))
+    
+    def create_unfolding_tree(self):
+      components_dict = self.component_graph.get_V()
+      root = components_dict.keys()[0]
+      root_component = self.component_graph.get_vertex(root)
+      root_node = ComponentNode(root_component)
+      remaining = [c for c in components_dict if c != root]
+      root_node, _ = self.create_unfolding_subtree(root_node, remaining)
+      return root_node
+      
+    def create_unfolding_subtree(self, root_node, remaining_components):
+      remaining = remaining_components
+      for c in remaining_components:
+        if not remaining:
+          break
+        if c not in remaining:
+          continue
+        remaining.remove(c)
+        component = self.component_graph.get_vertex(c)
+        bridge = self.get_bridge(root_node.component, component)
+        if not bridge:
+          continue
+        c_node = ComponentNode(component)
+        child, remaining = self.create_unfolding_subtree(c_node, remaining)
+        child.add_parent_bridge(bridge[1])
+        root_node.add_child(child)
+        root_node.add_child_bridge(bridge[0])
+      return root_node, remaining
+
+    # returns the bridge connecting component c1 and component c2
+    # returned as a list of length 2 of lists where the first sublist is the portion of the bridge in c1 as a sequence/path of faces and the second sublist is the portion not in c1
+    def get_bridge(self, c1, c2):
+      if c1.y == c2.y_minus_1:
+        y = c1.y
+      else:
+        y = c1.y_minus_1
+
+      c1_faces = c1.get_faces()
+      c2_faces = c2.get_faces()
+      c1_z = [face for face in c1_faces if c1.get_face(face).direction == '+z' or c1.get_face(face).direction == '-z']
+      c2_z = [face for face in c2_faces if c2.get_face(face).direction == '+z' or c2.get_face(face).direction == '-z']
+      all_faces_dict = self.dual_graph.get_V()
+      y_faces = [face for face in all_faces_dict if all_faces_dict[face].in_layer(y)]
+      face_subgraph = self.dual_graph.subgraph(c1_z + c2_z + y_faces)
+      c2_z_set = set(c2_z)
+      
+      for face in c1_z:
+        layers = [[face]]
+        all_faces = [face]
+        while layers[-1]:
+          next_layer = []
+          for vertex in layers[-1]:
+            connections = face_subgraph.get_connections(vertex)
+            connections = [c for c in connections if c not in all_faces]
+            all_faces.extend(connections)
+            if not c2_z_set.isdisjoint(connections):
+              for c in connections:
+                if c in c2_z_set:
+                  next_layer = [c]
+                  break
+              break
+            next_layer.extend([c for c in connections if face_subgraph.get_V()[c].in_layer(y)])
+          layers.append(next_layer)
+          if next_layer and next_layer[0] in c2_z_set:
+            break
+        if layers[-1] and layers[-1][0] in c2_z_set:
+          break
+      
+      if not layers[-1]:
+        return []
+
+      path = []
+      path.append(layers[-1][0])
+      prev = layers[-1][0]
+      for i in reversed(xrange(len(layers) - 1)):
+        connections = face_subgraph.get_connections(prev)
+        for face in layers[i]:
+          if face in connections:
+            path.insert(0, face)
+            prev = face
+            break
+      c1_bridge = []
+      c2_bridge = []
+      for face in path:
+        if face in c1_faces:
+          c1_bridge.append(face)
+        else:
+          c2_bridge.append(face)
+      return [c1_bridge, c2_bridge]
 
     def write_to_off(self, out_filename):
         """
@@ -172,3 +262,7 @@ class Polyhedron(object):
 if __name__ == "__main__":
     p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
     p.write_to_off("../out/poly.off")
+    #c1 = p.component_graph.get_V()[0]
+    #c2 = p.component_graph.get_V()[5]
+    #c3 = Component(p.dual_graph.subgraph([6]), 2, 1)
+    #print p.get_bridge(c1, c3)
