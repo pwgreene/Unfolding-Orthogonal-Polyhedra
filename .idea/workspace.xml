@@ -2,61 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0663cd3-f991-4ae9-a3da-571ffc01472b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix2f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix2f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix3f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix3f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix4f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Matrix4f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Quat4f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Quat4f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector2f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector2f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector3f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector3f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector4f.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/Vector4f.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/camera.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/camera.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/context.c.o" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/context.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/gl_util.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/gl_util.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/input.c.o" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/input.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/libglfw3.a" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/libglfw3.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/libvecmath.a" afterPath="$PROJECT_DIR$/viewer/build/vecmath/libvecmath.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/main.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/monitor.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/recorder.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/recorder.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/starter3_util.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/starter3_util.cpp.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/viewer" afterPath="$PROJECT_DIR$/viewer/build/viewer" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/vulkan.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/window.c.o" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/window.c.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/C.includecache" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/C.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeCache.txt" afterPath="$PROJECT_DIR$/viewer/build/CMakeCache.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/CMakeDirectoryInformation.cmake" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/CMakeDirectoryInformation.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/CMakeOutput.log" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/CMakeOutput.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/CXX.includecache" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/CXX.includecache" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/CXX.includecache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/Makefile" afterPath="$PROJECT_DIR$/viewer/build/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/Makefile" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/Makefile" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/Makefile" afterPath="$PROJECT_DIR$/viewer/build/vecmath/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/TargetDirectories.txt" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/TargetDirectories.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/build.make" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/build.make" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/build.make" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/cmake_install.cmake" afterPath="$PROJECT_DIR$/viewer/build/cmake_install.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/cmake_install.cmake" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/cmake_install.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/cmake_install.cmake" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/cmake_install.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/cmake_install.cmake" afterPath="$PROJECT_DIR$/viewer/build/vecmath/cmake_install.cmake" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component.py" afterPath="$PROJECT_DIR$/src/component.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/cuts.txt" afterPath="$PROJECT_DIR$/out/cuts.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/depend.internal" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/depend.internal" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/depend.internal" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/depend.internal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/flags.make" afterPath="$PROJECT_DIR$/viewer/build/3rd_party/glfw/src/CMakeFiles/glfw.dir/flags.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/flags.make" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/flags.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/flags.make" afterPath="$PROJECT_DIR$/viewer/build/vecmath/CMakeFiles/vecmath.dir/flags.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/src/main.cpp" afterPath="$PROJECT_DIR$/viewer/src/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/poly.off" afterPath="$PROJECT_DIR$/out/poly.off" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedra_generation.py" afterPath="$PROJECT_DIR$/src/polyhedra_generation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedron.py" afterPath="$PROJECT_DIR$/src/polyhedron.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tmp.fold" afterPath="$PROJECT_DIR$/src/tmp.fold" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Unfolding-Orthogonal-Polyhedra.iws" />
@@ -82,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+              <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -93,8 +46,8 @@
       <file leaf-file-name="component.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state vertical-scroll-proportion="-18.925926">
+              <caret line="324" column="18" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -138,8 +91,10 @@
         <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+              <caret line="249" column="45" selection-start-line="249" selection-start-column="45" selection-end-line="249" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +102,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30635837">
-              <caret line="82" column="102" selection-start-line="82" selection-start-column="102" selection-end-line="82" selection-end-column="102" />
+            <state vertical-scroll-proportion="0.3901734">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -184,11 +139,11 @@
         <option value="$PROJECT_DIR$/src/box.fold" />
         <option value="$PROJECT_DIR$/data/faces.py" />
         <option value="$PROJECT_DIR$/src/graph.py" />
-        <option value="$PROJECT_DIR$/src/polyhedra_generation.py" />
         <option value="$PROJECT_DIR$/src/fold_parser.py" />
         <option value="$PROJECT_DIR$/src/faces.py" />
         <option value="$PROJECT_DIR$/src/polyhedron.py" />
         <option value="$PROJECT_DIR$/src/component.py" />
+        <option value="$PROJECT_DIR$/src/polyhedra_generation.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
       </list>
     </option>
@@ -505,8 +460,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.polyhedron" />
-        <item index="2" class="java.lang.String" itemvalue="Python.polyhedra_generation" />
+        <item index="1" class="java.lang.String" itemvalue="Python.polyhedra_generation" />
+        <item index="2" class="java.lang.String" itemvalue="Python.polyhedron" />
         <item index="3" class="java.lang.String" itemvalue="Python.faces" />
         <item index="4" class="java.lang.String" itemvalue="Python.fold_parser" />
       </list>
@@ -535,7 +490,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554257" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37458193" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37458193" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -609,7 +564,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -663,7 +620,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -717,7 +676,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -771,7 +732,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -825,7 +788,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -852,13 +817,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
+    <entry file="file://$PROJECT_DIR$/src/faces.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="17" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -872,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component_node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -890,26 +843,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/faces.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <caret line="249" column="45" selection-start-line="249" selection-start-column="45" selection-end-line="249" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.925926">
+          <caret line="324" column="18" selection-start-line="324" selection-start-column="18" selection-end-line="324" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30635837">
-          <caret line="82" column="102" selection-start-line="82" selection-start-column="102" selection-end-line="82" selection-end-column="102" />
+        <state vertical-scroll-proportion="0.3901734">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>

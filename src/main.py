@@ -10,7 +10,9 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
     :return:
     """
     if len(root.children) == 0:  # leaf
+        print "processing leaf"
         f_0 = root.parent_bridge[-1]
+        print "bridge:", root.parent_bridge
         bridge_normal = polyhedron.faces[f_0].direction
         # check direction of parent component
         if bridge_normal == "+y":
@@ -37,10 +39,15 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         return num_leaves
 
     else:  # intermediate, recursive case
+        print "processing intermediate"
         num_leaves = 0
         child_faces = []
         child_face_directions = []
-        f_0 = root.parent_bridge[0]
+        f_0 = root.parent_bridge[-1]
+        print "f_0", f_0
+        print "parent:", root.parent_bridge
+        # print "chlidren:", root.children[0].parent_bridge
+        root.children_bridges = [[16]]
         bridge_normal = polyhedron.faces[f_0].direction
         if bridge_normal == "+y":
             parent_direction = "-y"
@@ -50,21 +57,29 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         # iterate through children and unfold them recursively
         for i in range(len(root.children)):
             child = root.children[i]
-            child_bridge = root.children_bridges[i]
-            bridge_normal = polyhedron.faces(child_bridge[1]).direction
+            child_bridge = child.parent_bridge
+            bridge_normal = polyhedron.faces[child_bridge[1]].direction
             if bridge_normal == "+y":
                 child_direction = "-y"
             else:
                 child_direction = "+y"
 
-            child_faces.append(child_bridge[0])
+            child_faces.append(root.children_bridges[i][0])
             child_face_directions.append(child_direction)
             child_leaves = unfold_polyhedron(polyhedron, child)
             num_leaves += child_leaves
             num_leaves_children.append(child_leaves)
+            print "-------"
+            print child_faces
+            print child_face_directions
+            print child_leaves
+            print num_leaves
+            print num_leaves_children
+            print "------"
         # bridge_cuts.append(((f_0, root.parent), num_leaves))
         root.f_0 = f_0
         root.num_leaves = num_leaves
+        print "children:", child_faces
         root.component.unfold_strip_intermediate(child_faces, child_face_directions, f_0,
                                                  parent_direction, num_leaves_children)
         return num_leaves
@@ -104,6 +119,10 @@ def write_cut_path(paths, filename):
           f.write("%s %s %s\n" % (point[0], point[1], point[2]))
 
 if __name__ == "__main__":
-    p1 = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    print unfold_polyhedron(p1, p1.unfolding_tree)
-    write_cut_path(gather_cuts(p1, p1.unfolding_tree), "../out/cuts.txt")
+    # p1 = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    p = Polyhedron(filelist=["../data/the_box.fold"])
+    # print unfold_polyhedron(p1, p1.unfolding_tree)
+    unfold_polyhedron(p, p.unfolding_tree)
+    print p.unfolding_tree.children[0].children
+    p.write_to_off("../out/poly.off")
+    write_cut_path(gather_cuts(p, p.unfolding_tree), "../out/cuts.txt")

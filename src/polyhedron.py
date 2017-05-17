@@ -351,25 +351,25 @@ class Polyhedron(object):
           c2_bridge.append(face)
       return [c1_bridge, c2_bridge]
 
-def write_to_off(self, out_filename):
-    """
-    output this polyhedron as an .off file
-    :param out_filename: (str) filename of output .off file
-    :return: None
-    """
-    nv, nt = len(self.vertices), len(self.faces)*2  # will split each face into 2 triangles
-    tri = []  # list of triangles (indices into vertex array)
-    for v1, v2, v3, v4 in self.faces_vertices:
-      tri.append([v1, v2, v3])
-      tri.append([v1, v3, v4])
-    with open(out_filename, 'w') as out:
-      out.write("OFF\n")
-      out.write("%s %s 0\n" % (nv, nt))
-      for v in self.vertices:
-        out.write("%s %s %s\n" % (v[0], v[1], v[2]))
-      for f in tri:
-        out.write("3   %s %s %s\n" % (f[0], f[1], f[2]))
-    print "wrote %s vertices and %s faces to %s" % (nv, nt, out_filename)
+    def write_to_off(self, out_filename):
+        """
+        output this polyhedron as an .off file
+        :param out_filename: (str) filename of output .off file
+        :return: None
+        """
+        nv, nt = len(self.vertices), len(self.faces)*2  # will split each face into 2 triangles
+        tri = []  # list of triangles (indices into vertex array)
+        for v1, v2, v3, v4 in self.faces_vertices:
+          tri.append([v1, v2, v3])
+          tri.append([v1, v3, v4])
+        with open(out_filename, 'w') as out:
+          out.write("OFF\n")
+          out.write("%s %s 0\n" % (nv, nt))
+          for v in self.vertices:
+            out.write("%s %s %s\n" % (v[0], v[1], v[2]))
+          for f in tri:
+            out.write("3   %s %s %s\n" % (f[0], f[1], f[2]))
+        print "wrote %s vertices and %s faces to %s" % (nv, nt, out_filename)
 
 if __name__ == "__main__":
     #p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
@@ -379,5 +379,6 @@ if __name__ == "__main__":
     #c.unfold_strip_root(12, "-y", 2)
     #p.write_to_off("../out/poly.off")
     
-    p = Polyhedron(filelist=["../data/boxes2.fold"])
+    #p = Polyhedron(filelist=["../data/boxes2.fold"])
+    #p = Polyhedron(filelist=["../data/the_box.fold"])
 
