@@ -149,6 +149,7 @@ class Polyhedron(object):
           for of in old_faces:
             all_faces.remove(of)
           all_faces.extend(new_faces)
+      all_faces = self.remove_duplicate_faces(all_faces, all_vertices) 
       return all_faces, all_edges, all_vertices
 
     def e_in_f_FOLD(self, e, f):
@@ -168,6 +169,45 @@ class Polyhedron(object):
           new_face2 = [v2, f[(i + 1) % len(f)], f[(i + 2) % len(f)], v1]
           break
       return new_face1, new_face2
+    
+    def remove_duplicate_faces(self, faces, vertices):
+      extra_faces = []
+      for d in xrange(3):
+        for i in xrange(len(faces)):
+          if faces[i] in extra_faces:
+            continue
+          if len(set([vertices[v][d] for v in faces[i]])) != 1:
+            continue
+          projectable = [faces[i]]
+          for j in xrange(i + 1, len(faces)):
+            if faces[j] in extra_faces:
+              continue
+            if len(set([vertices[v][d] for v in faces[j]])) != 1:
+              continue
+            if self.faces_projectable(faces[i], faces[j], d, vertices):
+              projectable.append(faces[j])
+          if len(projectable) > 2:
+            projectable.sort(key=lambda x: vertices[x[0]][d])
+            extra_faces.extend(projectable[1:-1])
+      return [f for f in faces if f not in extra_faces]
+
+    # returns true if f1 and f2 projected along axis are equivalent
+    # only true if f1 and f2 have normals along axis
+    def faces_projectable(self, f1, f2, axis, vertices):
+      f1_proj = []
+      for v_id in f1:
+        v = list(vertices[v_id])
+        del v[axis]
+        f1_proj.append(v)
+      f2_proj = []
+      for v_id in f2:
+        v = list(vertices[v_id])
+        del v[axis]
+        f2_proj.append(v)
+      for p in f1_proj:
+        if p not in f2_proj:
+          return False
+      return True
     
     def create_primal_graph(self):
         """
@@ -332,12 +372,12 @@ def write_to_off(self, out_filename):
     print "wrote %s vertices and %s faces to %s" % (nv, nt, out_filename)
 
 if __name__ == "__main__":
-    p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    c = p.component_graph.get_V()[5]
+    #p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    #c = p.component_graph.get_V()[5]
     # c.unfold_strip_leaf(11, "-y")
     # c.unfold_strip_intermediate([13, 15, 14], ["+y", "+y", "+y"], 11, "+y", [4, 4, 2])
-    c.unfold_strip_root(12, "-y", 2)
-    p.write_to_off("../out/poly.off")
+    #c.unfold_strip_root(12, "-y", 2)
+    #p.write_to_off("../out/poly.off")
     
-    #p = Polyhedron(filelist=["../data/boxes2.fold"])
+    p = Polyhedron(filelist=["../data/boxes2.fold"])
 
