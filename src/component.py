@@ -597,9 +597,9 @@ class Component:
     # for p in all_cuts:
     #   print p
 
-  def unfold_strip_root(self, f_0, parent_direction, num_leaves):
+  def unfold_strip_root(self, f_0, child_direction, num_leaves):
 
-    flip_sides = parent_direction == "-y"  # define direction to move
+    flip_sides = child_direction == "-y"  # define direction to move
     self.compute_protrusion_path(f_0)
 
     self.find_connector()
