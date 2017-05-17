@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer"
+CMAKE_SOURCE_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build"
+CMAKE_BINARY_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/3rd_party/glfw/CMakeFiles/progress.marks"
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" 0
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/3rd_party/glfw/CMakeFiles/progress.marks"
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/clean
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,17 +97,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/preinstall
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/preinstall
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(MAKE) -f CMakeFiles/Makefile2 3rd_party/glfw/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -129,6 +129,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

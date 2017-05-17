@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer"
+CMAKE_SOURCE_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build"
+CMAKE_BINARY_DIR = "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/viewer.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/viewer.dir/flags.make
 
 CMakeFiles/viewer.dir/src/main.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/viewer.dir/src/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/main.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/viewer.dir/src/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/main.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/main.cpp"
 
 CMakeFiles/viewer.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/main.cpp" > CMakeFiles/viewer.dir/src/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/main.cpp" > CMakeFiles/viewer.dir/src/main.cpp.i
 
 CMakeFiles/viewer.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/main.cpp" -o CMakeFiles/viewer.dir/src/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/main.cpp" -o CMakeFiles/viewer.dir/src/main.cpp.s
 
 CMakeFiles/viewer.dir/src/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/viewer.dir/src/main.cpp.o.provides.build: CMakeFiles/viewer.dir/src/m
 
 CMakeFiles/viewer.dir/src/starter3_util.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/starter3_util.cpp.o: ../src/starter3_util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/viewer.dir/src/starter3_util.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/starter3_util.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/viewer.dir/src/starter3_util.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/starter3_util.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.cpp"
 
 CMakeFiles/viewer.dir/src/starter3_util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/starter3_util.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.cpp" > CMakeFiles/viewer.dir/src/starter3_util.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.cpp" > CMakeFiles/viewer.dir/src/starter3_util.cpp.i
 
 CMakeFiles/viewer.dir/src/starter3_util.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/starter3_util.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.cpp" -o CMakeFiles/viewer.dir/src/starter3_util.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.cpp" -o CMakeFiles/viewer.dir/src/starter3_util.cpp.s
 
 CMakeFiles/viewer.dir/src/starter3_util.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/viewer.dir/src/starter3_util.cpp.o.provides.build: CMakeFiles/viewer.
 
 CMakeFiles/viewer.dir/src/camera.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/camera.cpp.o: ../src/camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/viewer.dir/src/camera.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/camera.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/viewer.dir/src/camera.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/camera.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.cpp"
 
 CMakeFiles/viewer.dir/src/camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/camera.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.cpp" > CMakeFiles/viewer.dir/src/camera.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.cpp" > CMakeFiles/viewer.dir/src/camera.cpp.i
 
 CMakeFiles/viewer.dir/src/camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/camera.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.cpp" -o CMakeFiles/viewer.dir/src/camera.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.cpp" -o CMakeFiles/viewer.dir/src/camera.cpp.s
 
 CMakeFiles/viewer.dir/src/camera.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/viewer.dir/src/camera.cpp.o.provides.build: CMakeFiles/viewer.dir/src
 
 CMakeFiles/viewer.dir/src/recorder.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/recorder.cpp.o: ../src/recorder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/viewer.dir/src/recorder.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/recorder.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/viewer.dir/src/recorder.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/recorder.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.cpp"
 
 CMakeFiles/viewer.dir/src/recorder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/recorder.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.cpp" > CMakeFiles/viewer.dir/src/recorder.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.cpp" > CMakeFiles/viewer.dir/src/recorder.cpp.i
 
 CMakeFiles/viewer.dir/src/recorder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/recorder.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.cpp" -o CMakeFiles/viewer.dir/src/recorder.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.cpp" -o CMakeFiles/viewer.dir/src/recorder.cpp.s
 
 CMakeFiles/viewer.dir/src/recorder.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/viewer.dir/src/recorder.cpp.o.provides.build: CMakeFiles/viewer.dir/s
 
 CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o: ../src/vertexrecorder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.cpp"
 
 CMakeFiles/viewer.dir/src/vertexrecorder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/vertexrecorder.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.cpp" > CMakeFiles/viewer.dir/src/vertexrecorder.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.cpp" > CMakeFiles/viewer.dir/src/vertexrecorder.cpp.i
 
 CMakeFiles/viewer.dir/src/vertexrecorder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/vertexrecorder.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.cpp" -o CMakeFiles/viewer.dir/src/vertexrecorder.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.cpp" -o CMakeFiles/viewer.dir/src/vertexrecorder.cpp.s
 
 CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/viewer.dir/src/vertexrecorder.cpp.o.provides.build: CMakeFiles/viewer
 
 CMakeFiles/viewer.dir/src/gl_util.cpp.o: CMakeFiles/viewer.dir/flags.make
 CMakeFiles/viewer.dir/src/gl_util.cpp.o: ../src/gl_util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/viewer.dir/src/gl_util.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/gl_util.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/viewer.dir/src/gl_util.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/viewer.dir/src/gl_util.cpp.o -c "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.cpp"
 
 CMakeFiles/viewer.dir/src/gl_util.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/viewer.dir/src/gl_util.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.cpp" > CMakeFiles/viewer.dir/src/gl_util.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.cpp" > CMakeFiles/viewer.dir/src/gl_util.cpp.i
 
 CMakeFiles/viewer.dir/src/gl_util.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/viewer.dir/src/gl_util.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.cpp" -o CMakeFiles/viewer.dir/src/gl_util.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.cpp" -o CMakeFiles/viewer.dir/src/gl_util.cpp.s
 
 CMakeFiles/viewer.dir/src/gl_util.cpp.o.requires:
 
@@ -223,7 +223,7 @@ viewer: CMakeFiles/viewer.dir/build.make
 viewer: 3rd_party/glfw/src/libglfw3.a
 viewer: vecmath/libvecmath.a
 viewer: CMakeFiles/viewer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable viewer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/viewer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -245,6 +245,6 @@ CMakeFiles/viewer.dir/clean:
 .PHONY : CMakeFiles/viewer.dir/clean
 
 CMakeFiles/viewer.dir/depend:
-	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/CMakeFiles/viewer.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build" "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/CMakeFiles/viewer.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/viewer.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer
+# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,8 +29,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/3rd_party/glfw/cmake_install.cmake")
-  include("/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/vecmath/cmake_install.cmake")
+  include("/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/3rd_party/glfw/cmake_install.cmake")
+  include("/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/vecmath/cmake_install.cmake")
 
 endif()
 
@@ -42,5 +42,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

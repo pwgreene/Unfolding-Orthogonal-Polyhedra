@@ -28,10 +28,10 @@ namespace
     // Some constants
     const Vector3f LIGHT_POS(0.0f, 8.0f, 16.0f);
     const Vector3f LIGHT_COLOR(500, 500, 500);
-    const Vector3f MESH_COLOR(0.0f, 0.0f, 1.0f);
+    const Vector3f MESH_COLOR(0.1f, 0.3f, 1.0f);
     const Vector3f MESH_AMBIENT = .3 * MESH_COLOR;
-    const Vector3f PATH_COLOR(0.1f, 1.0f, 0.0f);
-    const Vector3f PATH_AMBIENT = .6 * PATH_COLOR;
+    const Vector3f PATH_COLOR(0.1f, 1.0f, 0.2f);
+    const Vector3f PATH_AMBIENT = .9 * PATH_COLOR;
     const float ambient_amount = .15;
 
     
@@ -161,7 +161,7 @@ namespace
             f.push_back(b); f.push_back(b); f.push_back(b);
             f.push_back(c); f.push_back(c); f.push_back(c);
             if (a > nv || b > nv || c > nv) {
-                printf("bad\n");
+                printf("bad, %d %d %d\n", a, b, c);
             }
             vecf.push_back(f);
             //compute face normals
@@ -267,7 +267,7 @@ namespace
                 //translation = scale*translation
                 
                 gl.updateModelMatrix(translation*rotation);
-                drawCylinder(5, PATH_WIDTH, length);
+                drawCylinder(3, PATH_WIDTH, length);
             }
         }
     }
@@ -276,6 +276,7 @@ namespace
         // draw obj mesh here
         // read vertices and face indices from vecv, vecn, vecf
         GLProgram gl(program_light, program_color, &camera);
+        gl.updateModelMatrix(Matrix4f::identity());
         gl.updateLight(LIGHT_POS, LIGHT_COLOR.xyz()); // once per frame
         gl.updateMaterial(MESH_COLOR, MESH_AMBIENT);
         GeometryRecorder rec(vecf.size() * 3);
@@ -339,7 +340,7 @@ namespace
         camera.SetPerspective(50);
         camera.SetDistance(20);
 
-//        loadMesh();
+        loadMesh();
         loadPath();
         
         // Main Loop
@@ -349,7 +350,7 @@ namespace
 
             setViewport(window);
             
-//            drawMesh();
+            //drawMesh();
             drawPath();
 
             // Make back buffer visible

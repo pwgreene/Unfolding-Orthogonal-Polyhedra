@@ -6,5 +6,5 @@ CXX_FLAGS =  --std=gnu++11 -g -Wall -Wno-unused-variable -isysroot /Applications
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/vecmath/include" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/3rd_party/glfw/include" 
+CXX_INCLUDES = -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/vecmath/include" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/3rd_party/glfw/include" 
 

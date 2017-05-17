@@ -6,5 +6,5 @@ C_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/3rd_party/glfw/include" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/3rd_party/glfw/src" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/build/3rd_party/glfw/src" 
+C_INCLUDES = -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/3rd_party/glfw/include" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/3rd_party/glfw/src" -I"/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/build/3rd_party/glfw/src" 
 

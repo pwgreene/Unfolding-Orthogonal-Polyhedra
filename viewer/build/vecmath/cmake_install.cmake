@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/vecmath
+# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/vecmath
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

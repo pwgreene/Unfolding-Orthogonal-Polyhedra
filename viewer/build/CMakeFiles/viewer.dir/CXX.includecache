@@ -86,39 +86,39 @@ Vector3f.h
 Vector4f.h
 ../vecmath/include/Vector4f.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.cpp
 camera.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.h
 iostream
 -
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.h
 vecmath.h
 -
 cstdint
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 OpenGL/gl3.h
 -
 GL/glew.h
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.cpp
 gl_util.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.h
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 camera.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.h
 random
 -
 cstdio
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.h
 vector
 -
 vecmath.h
@@ -126,9 +126,9 @@ vecmath.h
 cstdint
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/main.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/main.cpp
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 GLFW/glfw3.h
 -
 cmath
@@ -148,37 +148,37 @@ cstdio
 cstdint
 -
 vertexrecorder.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.h
 recorder.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.h
 starter3_util.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.h
 camera.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/camera.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/camera.h
 gl_util.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl_util.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.cpp
 recorder.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.h
 cassert
 -
 cstdint
 -
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/recorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/recorder.h
 vector
 -
 vecmath.h
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.cpp
 starter3_util.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.h
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 GLFW/glfw3.h
 -
 cstdio
@@ -188,27 +188,27 @@ cstring
 cassert
 -
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/starter3_util.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/starter3_util.h
 cstdint
 -
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.cpp
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.cpp
 vertexrecorder.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.h
 cassert
 -
 cstdint
 -
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/vertexrecorder.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/vertexrecorder.h
 vector
 -
 vecmath.h
 -
 gl.h
-/Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/src/gl.h
+/Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/src/gl.h
 

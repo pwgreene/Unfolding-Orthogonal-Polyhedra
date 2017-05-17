@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/viewer/3rd_party/glfw/src
+# Install script for directory: /Users/Parker/Documents/MIT/Junior Spring/6.849/project/Unfolding-Orthogonal-Polyhedra/viewer/3rd_party/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
