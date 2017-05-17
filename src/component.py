@@ -19,7 +19,7 @@ class Component:
     # TODO: initialize the total number of strips in this component
     # self.num_strips = ?
 
-    self.f_0 = 11  #TODO: find f_0 (bridge z+ direction)
+    # self.f_0 = 11  #TODO: find f_0 (bridge z+ direction)
 
     back_rim_faces = [key for key in faces if faces[key].in_layer(y)]
     self.back_rim = self.full_graph.subgraph(back_rim_faces)
@@ -29,7 +29,6 @@ class Component:
 
     self.depth = abs(y - y_minus_1)
 
-    # if is_leaf:
     '''
     try:
       # self.connector_path is list of indices into full graph, where f_i is first element and f_j is last
@@ -53,14 +52,12 @@ class Component:
     '''
 
 
-  def unfolding_path(self):
+  def compute_protrusion_path(self, f_0):
     """
     create a tree that navigates the protrusion ccw
-    :param root: root face (should be +z or -z direction)
-    :param is_leaf: bool
     :return: None
     """
-    root = self.f_0
+    root = f_0
     p = root
 
     vertices = self.prot.get_V()
@@ -97,18 +94,19 @@ class Component:
           p = c
           visited[c] = 1
           break
-    return path
+
+    self.protrusion_path = path[:-1]
     # return Graph(vertices, E_dict=edges)
 
 
-  def find_connector(self):
+  def find_connector(self, f_i):
     """
     find the connector of the component if starting from f_i
     :param f_i: index of starting face
     :return: list of Faces
     """
     back_rim = set(self.back_rim.get_V())
-    face_path = [self.f_i]
+    face_path = [f_i]
     next_face = back_rim.intersection(set(self.full_graph.get_connections(face_path[-1])))
 
     while next_face:
@@ -123,14 +121,16 @@ class Component:
         break
     return face_path
 
-  def unfold_strip_leaf(self):
+  def unfold_strip_leaf(self, f_0):
     # cut_1 is the left-most cut
 
     cut_1 = []
     cut_2 = []
     cut_3 = []
 
-    f_0_vertices = self.full_graph.get_V()[self.f_0].vertices
+    self.compute_protrusion_path(f_0)
+
+    f_0_vertices = self.full_graph.get_V()[f_0].vertices
     # first 3 points of s and t, respectively
     cut_1.append(f_0_vertices[0])
     cut_2.append((f_0_vertices[0]+f_0_vertices[1])/2.0)
@@ -190,7 +190,7 @@ class Component:
     path_index = 1
     cur_face_index = self.protrusion_path[path_index]
     last_face = self.full_graph.get_V()[cur_face_index]
-    while cur_face_index != self.f_0:
+    while cur_face_index != f_0:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], cur_face.vertices[0][1] + .25*self.depth, cur_face.vertices[0][2]])
       if last_face is None or cur_face.direction != last_face.direction:
@@ -260,7 +260,7 @@ class Component:
     path_index = 1
     cur_face_index = self.protrusion_path[path_index]
     last_face = None
-    while cur_face_index != self.f_0:
+    while cur_face_index != f_0:
       cur_face = self.full_graph.get_V()[cur_face_index]
       next_p = np.array([cur_face.vertices[0][0], self.y_minus_1, cur_face.vertices[0][2]])
       if last_face is None or last_face.direction != cur_face.direction:
@@ -293,43 +293,56 @@ class Component:
     self.write_cut_path([cut_1, cut_2, cut_3], "../out/cuts.txt")
     # self.write_strip(cut_3, [])
 
-  def unfold_strip_intermediate(self):
+  def unfold_strip_intermediate(self, child_faces, child_face_directions, f_0, parent_face_direction,
+                                num_leaves_children):
+    """
+    unfolds the strip given locations of faces that connect to rest of tree. Directions are +y or -y
+    :param child_faces: list of indices of face on bridges to children
+    :param child_face_directions: direction of children (list of strings)
+    :param f_0: face on bridge to parent (defined in paper)
+    :param parent_face_direction: direction of bridge to parent (string)
+    :param num_leaves_children: number of leaves of the tree rooted at each child (list of ints)
+    :return: None
+    """
+
+    self.compute_protrusion_path(f_0)
+    print self.protrusion_path
+
     B1 = []
     B2 = []
     all_cuts = []
-    try:
-      f_0_face = self.full_graph.get_V()[self.f_0]
-    except:
-      return
+    f_0_face = self.full_graph.get_V()[f_0]
+    # map each face index of child to corresponding direction/number of leaves
+    strips_on_face = dict([(child_faces[i], (child_face_directions[i], num_leaves_children[i]))
+                         for i in range(len(child_faces))])
 
-    for child in self.children:
-      bridge_index = child.bridge_face() # TODO: define this - should be bridge between this component and its children
-      bridge_face = self.full_graph.get_V()[bridge_index]
+    for c in range(len(child_faces)):
       # is child bridge in B1 or B2?
-      if bridge_face.in_layer(self.y_minus_1):
-        B1.append(child)
+      if child_face_directions[c] == "-y":
+        B1.append(child_faces[c])
       else:
-        B2.append(child)
+        B2.append(child_faces[c])
 
-    B1 = [13, 15]
-    B2 = [14]
-    B1_cuts = 5 # for testing
-    B2_cuts = 3
+    # B1 = [13, 15]
+    # B2 = [14]
+    # B1_cuts = 5 # for testing
+    # B2_cuts = 3
     assert (set(B1).isdisjoint(set(B2)))
 
     # sort B1, B2 by distance from f_k, respective to ccw direction around protrusion
-    # B1 = sorted(B1, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
-    # B2 = sorted(B2, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
-    # self.parent_face = ??? TODO
-    flip_sides = False#not self.parent_face.in_layer(self.y_minus_1)
+    B1 = sorted(B1, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
+    B2 = sorted(B2, key=lambda c: [i for i in range(len(self.protrusion_path)) if self.protrusion_path[i] == c].pop())
+
+    flip_sides = parent_face_direction == "+y"
     if flip_sides: # reverse orientation with respect to paper's description
       B1, B2 = B2[::-1], B1[::-1]
     cuts_so_far = 0  #keeps track of number of cuts going back to parent
+    print B1, B2, flip_sides
 
     f_0_strip_width = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(len(B1) + len(B2))
-    # TODO: initialize self.parent or this will throw an error
-    total_strips = (B1_cuts-1)*len(B1) + (B2_cuts-1)*len(B2)
-    print total_strips
+
+    # total_strips = (B1_cuts-1)*len(B1) + (B2_cuts-1)*len(B2)
+    total_strips = sum(num_leaves_children)
     # strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(self.total_strips)
 
     strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(total_strips)
@@ -337,14 +350,14 @@ class Component:
 
     layer_width = float(self.depth) / (len(B1) + 2*len(B2))
     for i in range(len(B1)):
-      child = B1[i]
+      # child = B1[i]
       # bridge_index = child.bridge_face() # TODO: define this - should be bridge between this component and its children
       bridge_index = B1[i]
       bridge_face = self.full_graph.get_V()[bridge_index]
 
       width = abs(bridge_face.vertices[0][0] - bridge_face.vertices[1][0])
-      # num_cuts = ??? TODO (something to do with number of leaves rooted here)
-      num_cuts = B1_cuts
+      num_cuts = strips_on_face[bridge_index][1] + 1
+      # num_cuts = B1_cuts
       cut_width = float(width) / (num_cuts - 1)
       cut_paths = [[] for _ in range(num_cuts)]
 
@@ -386,7 +399,7 @@ class Component:
         path_index = starting_face_index
         cur_face_index = self.protrusion_path[path_index]
         # last_face = None
-        while cur_face_index != self.f_0:
+        while cur_face_index != f_0:
           cur_face = self.full_graph.get_V()[cur_face_index]
           if flip_sides:
             next_p = np.array([cur_face.vertices[2][0], cur_face.vertices[2][1] - cut_depth,
@@ -432,13 +445,16 @@ class Component:
     cuts_so_far = 0
     for i in range(len(B2)):
       child = B2[i]
-      # bridge_index = child.bridge_face() # TODO: define this - should be bridge between this component and its children
+
       bridge_index = B2[i]
       bridge_face = self.full_graph.get_V()[bridge_index]
+      print bridge_face
 
       width = abs(bridge_face.vertices[0][0] - bridge_face.vertices[1][0])
+      print bridge_index
+      print "width:", width
       # num_cuts = child.num_children * 2 + 1  # number of strips in child + 1
-      num_cuts = B2_cuts  # TODO: get number of cuts for children
+      num_cuts = strips_on_face[bridge_index][1] + 1
       cut_width = float(width) / (num_cuts - 1)
       cut_paths = [[] for _ in range(num_cuts)]
 
@@ -450,6 +466,7 @@ class Component:
           cut_depth2 = layer_width + x
         else:
           cut_depth2 = layer_width + cut_depth
+        print cut_depth, cut_width
         if not (i == 0 and cut_num == 0):
           if bridge_face.direction == "+z":
             if flip_sides:
@@ -476,7 +493,7 @@ class Component:
           f_k = self.protrusion_path[1]
         else:
           f_k = self.protrusion_path[-1]
-
+        print f_k, self.protrusion_path
         f_k_face = self.full_graph.get_V()[f_k]
         if f_k_face.direction == "+z":
           f_k_strip_width = abs(f_k_face.vertices[0][0] - f_k_face.vertices[1][0]) / float(len(B2))
@@ -499,7 +516,7 @@ class Component:
           else:
             path_index -= 1
           cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
-
+        '''
         # go down f_k
         if f_k_face.direction == "+z":
           if flip_sides:
@@ -526,7 +543,7 @@ class Component:
         cut_paths[cut_num].append(np.array([x, y, z]))
 
         # go along until reaching f_0
-        while cur_face_index != self.f_0:
+        while cur_face_index != f_0:
           cur_face = self.full_graph.get_V()[cur_face_index]
           if flip_sides:
             next_p = np.array([cur_face.vertices[1][0], y, cur_face.vertices[1][2]])
@@ -557,18 +574,22 @@ class Component:
         else:
           y = f_0_face.vertices[0][1]
         cut_paths[cut_num].append(np.array([x, y, z]))
+        '''
 
-        all_cuts.extend(cut_paths)
+      all_cuts.extend(cut_paths)
 
       cuts_so_far += num_cuts-1
-
+    for c in all_cuts:
+        print c
     # self.write_cut_path_as_fold(all_cuts)
     self.write_cut_path(all_cuts, "../out/cuts.txt")
     # for p in all_cuts:
     #   print p
 
-  def unfold_strip_root(self):
-    f_0_vertices = self.full_graph.get_V()[self.f_0].vertices
+  def unfold_strip_root(self, f_0):
+
+    self.compute_protrusion_path(f_0)
+    f_0_vertices = self.full_graph.get_V()[f_0].vertices
 
     #num_cuts = self.num_leaves*2 + 1 #TODO: define this correctly - there are 6 strips but cuts come together, so only 4 cuts (3 pairs + L(Q_1))
     num_cuts = 3
@@ -577,7 +598,7 @@ class Component:
 
     cut_paths = [[] for cut_num in range(num_cuts)]
     # bridge_index = self.child_bridge  # TODO
-    bridge_index = self.f_0
+    bridge_index = f_0
     bridge_face = self.full_graph.get_V()[bridge_index]
 
     # flip_sides = self.parent.in_layer(self.y_minus_1)
