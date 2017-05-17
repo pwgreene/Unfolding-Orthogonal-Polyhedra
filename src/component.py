@@ -305,7 +305,7 @@ class Component:
     """
 
     self.compute_protrusion_path(f_0)
-    print self.protrusion_path
+    print "protrusion path",  self.protrusion_path
 
     B1 = []
     B2 = []
@@ -321,7 +321,8 @@ class Component:
         B1.append(child_faces[c])
       else:
         B2.append(child_faces[c])
-
+    print "b1", B1
+    print "b2", B2
     # B1 = [13, 15]
     # B2 = [14]
     # B1_cuts = 5 # for testing
