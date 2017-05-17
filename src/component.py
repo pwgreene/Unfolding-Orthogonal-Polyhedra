@@ -312,7 +312,7 @@ class Component:
     all_cuts = []
     f_0_face = self.full_graph.get_V()[f_0]
     # map each face index of child to corresponding direction/number of leaves
-    strips_on_face = dict([(child_faces[i], (child_face_directions[i], num_leaves_children[i]))
+    strips_on_face = dict([(child_faces[i], (child_face_directions[i], num_leaves_children[i]*2))
                          for i in range(len(child_faces))])
 
     for c in range(len(child_faces)):
@@ -321,8 +321,7 @@ class Component:
         B1.append(child_faces[c])
       else:
         B2.append(child_faces[c])
-    print "b1", B1
-    print "b2", B2
+
     # B1 = [13, 15]
     # B2 = [14]
     # B1_cuts = 5 # for testing
@@ -342,11 +341,10 @@ class Component:
     f_0_strip_width = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(len(B1) + len(B2))
 
     # total_strips = (B1_cuts-1)*len(B1) + (B2_cuts-1)*len(B2)
-    total_strips = sum(num_leaves_children)
-    # strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(self.total_strips)
+    total_strips = sum(num_leaves_children)*2
 
     strip_width_to_parent = abs(f_0_face.vertices[0][0] - f_0_face.vertices[0][1])/float(total_strips)
-    print strip_width_to_parent, total_strips
+    print "widths", strip_width_to_parent, total_strips
 
     layer_width = float(self.depth) / (len(B1) + 2*len(B2))
     for i in range(len(B1)):
@@ -398,6 +396,9 @@ class Component:
 
         path_index = starting_face_index
         cur_face_index = self.protrusion_path[path_index]
+        if cur_face_index == f_0:
+          path_index += 1
+          cur_face_index = self.protrusion_path[path_index]
         # last_face = None
         while cur_face_index != f_0:
           cur_face = self.full_graph.get_V()[cur_face_index]

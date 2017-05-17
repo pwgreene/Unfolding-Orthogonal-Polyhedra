@@ -79,7 +79,6 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         # bridge_cuts.append(((f_0, root.parent), num_leaves))
         root.f_0 = f_0
         root.num_leaves = num_leaves
-        print "children:", child_faces
         print "processing intermediate"
         root.component.unfold_strip_intermediate(child_faces, child_face_directions, f_0,
                                                  parent_direction, num_leaves_children)
