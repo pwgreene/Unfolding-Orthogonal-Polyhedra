@@ -7,6 +7,7 @@ def unfold_polyhedron(p):
     :return:
     """
     root = p.unfolding_tree
+    print root.children_bridges
     if len(root.children) == 0:  # leaf
         f_0 = root.parent_bridge[0]
         bridge_normal = p.faces(f_0).direction
@@ -18,7 +19,7 @@ def unfold_polyhedron(p):
         root.component.unfold_strip_leaf(f_0, parent_direction)
         return 1
 
-    elif len(root.parent) == 0:  # root
+    elif root.parent is None:  # root
         bridge_normal = p.faces(root.children_bridges[0][1]).direction
         # check direction of child component
         if bridge_normal == "+y":
@@ -55,5 +56,10 @@ def unfold_polyhedron(p):
             child_leaves = unfold_polyhedron(child)
             num_leaves += child_leaves
             num_leaves_children.append(child_leaves)
-            root.component.unfold_strip_intermediate(child_faces, child_face_directions, f_0, num_leaves_children)
-            return num_leaves
+        root.component.unfold_strip_intermediate(child_faces, child_face_directions, f_0,
+                                                 parent_direction, num_leaves_children)
+        return num_leaves
+
+if __name__ == "__main__":
+    p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    print unfold_polyhedron(p)
