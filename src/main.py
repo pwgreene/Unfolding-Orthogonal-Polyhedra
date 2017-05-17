@@ -14,7 +14,7 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         f_0 = root.parent_bridge[-1]
         print "f_0", f_0
         print "bridge:", root.parent_bridge
-        bridge_normal = polyhedron.faces[f_0].direction
+        bridge_normal = polyhedron.faces[root.parent_bridge[0]].direction
         # check direction of parent component
         if bridge_normal == "+y":
             parent_direction = "+y"
@@ -122,6 +122,7 @@ if __name__ == "__main__":
     # p1 = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
     p = Polyhedron(filelist=["../data/the_box.fold"])
     # print unfold_polyhedron(p1, p1.unfolding_tree)
+    print p.unfolding_tree.children_bridges
     unfold_polyhedron(p, p.unfolding_tree)
     print p.unfolding_tree.children[0].children
     p.write_to_off("../out/poly.off")
