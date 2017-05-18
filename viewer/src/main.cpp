@@ -23,7 +23,7 @@ namespace
     
     // Declarations of functions whose implementations occur later.
 
-    void initRendering();
+    //void initRendering();
 
     // Some constants
     const Vector3f LIGHT_POS(0.0f, 8.0f, 16.0f);
@@ -33,6 +33,8 @@ namespace
     const Vector3f PATH_COLOR(0.1f, 1.0f, 0.2f);
     const Vector3f PATH_AMBIENT = .9 * PATH_COLOR;
     const float ambient_amount = .15;
+    
+    bool MESH_ON = false;
 
     
     // Globals here.
@@ -74,6 +76,9 @@ namespace
             camera.SetCenter(Vector3f(0, 0, 0));
             break;
         }
+        case 77:
+            MESH_ON = !MESH_ON; //toggle mesh appearance
+            break;
         default:
             cout << "Unhandled key press " << key << "." << endl;
         }
@@ -222,12 +227,12 @@ namespace
         printf("loaded %d paths\n", nPaths);
         
 //        prints out all paths, for testing
-        for (int i = 0; i < nPaths; i++) {
-            printf("%d\n", paths[i].size());
-            for (int j = 0; j < paths[i].size(); j++) {
-                paths[i][j].print();
-            }
-            printf("\n");
+        //for (int i = 0; i < nPaths; i++) {
+         //   printf("%d\n", paths[i].size());
+           // for (int j = 0; j < paths[i].size(); j++) {
+             //   paths[i][j].print();
+           // }
+            //printf("\n");
         }
     }
     
@@ -306,7 +311,6 @@ namespace
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
-}
 
     // Main routine.
     // Set up OpenGL, define the callbacks and start the main loop
@@ -350,7 +354,8 @@ namespace
 
             setViewport(window);
             
-            //drawMesh();
+            if (MESH_ON)
+                drawMesh();
             drawPath();
 
             // Make back buffer visible

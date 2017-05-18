@@ -116,21 +116,21 @@ def flip_faces(filename):
 if __name__ == "__main__":
     # FOR TESTING
 
-    file = "../data/the_box.fold"
-    # C0 = create_box([-1, 2, 7], 3, 1, 2)
+    file = "../data/test_case6.fold"
+    # C0 = create_box([3, 2, 7], 4, 1, 2)
     # create_fold_file(file, C0)
 
-    C1 = create_box([1, 1, -1], 4, 1, 9)
+    C1 = create_box([0, 1, 1], 4, 1, 6)
     create_fold_file(file, C1)
 
-    C2 = create_box([-1, 0, 4], 5, 1, 3)
-    create_fold_file(file, C2, append=True)
+    # C2 = create_box([-1, 0, 4], 5, 1, 3)
+    # create_fold_file(file, C2, append=True)
 
-    C3 = create_box([-2, -1, 5], 4, 1, 1)
+    C3 = create_box([-2, 0, -1], 4, 1, 6)
     create_fold_file(file, C3, append=True)
 
-    # C4 = create_box([0, 0, 2], 8, 1, 1)
-    # create_fold_file(file, C4, append=True)
+    C4 = create_box([0, 2, 2], 6, 1, 2)
+    create_fold_file(file, C4, append=True)
 
     # C5 = create_box([0, 0, 0], 8, 1, 1)
     # create_fold_file(file, C5, append=True)

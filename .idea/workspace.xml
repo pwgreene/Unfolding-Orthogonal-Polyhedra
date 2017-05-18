@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0663cd3-f991-4ae9-a3da-571ffc01472b" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/the_box.fold" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/main.cpp.o" afterPath="$PROJECT_DIR$/viewer/build/CMakeFiles/viewer.dir/src/main.cpp.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/build/viewer" afterPath="$PROJECT_DIR$/viewer/build/viewer" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/component.py" afterPath="$PROJECT_DIR$/src/component.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/cuts.txt" afterPath="$PROJECT_DIR$/out/cuts.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viewer/src/main.cpp" afterPath="$PROJECT_DIR$/viewer/src/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/poly.off" afterPath="$PROJECT_DIR$/out/poly.off" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedra_generation.py" afterPath="$PROJECT_DIR$/src/polyhedra_generation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/the_box.fold" afterPath="$PROJECT_DIR$/data/the_box.fold" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyhedron.py" afterPath="$PROJECT_DIR$/src/polyhedron.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tmp.fold" afterPath="$PROJECT_DIR$/src/tmp.fold" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tmp2.fold" afterPath="$PROJECT_DIR$/src/tmp2.fold" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -36,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+              <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -47,8 +50,8 @@
       <file leaf-file-name="component.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="137.18518">
-              <caret line="346" column="55" selection-start-line="346" selection-start-column="55" selection-end-line="346" selection-end-column="55" />
+            <state vertical-scroll-proportion="-66.111115">
+              <caret line="274" column="29" selection-start-line="274" selection-start-column="29" selection-end-line="274" selection-end-column="29" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <element signature="e#2708#3920#0" expanded="false" />
@@ -81,9 +84,10 @@
         <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="383" column="8" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="8" />
+              <caret line="403" column="8" selection-start-line="403" selection-start-column="8" selection-end-line="403" selection-end-column="8" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
+                <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -92,8 +96,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.3034682">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.783237">
+              <caret line="142" column="39" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -123,8 +127,8 @@
         <option value="$PROJECT_DIR$/src/faces.py" />
         <option value="$PROJECT_DIR$/src/polyhedron.py" />
         <option value="$PROJECT_DIR$/src/polyhedra_generation.py" />
-        <option value="$PROJECT_DIR$/src/main.py" />
         <option value="$PROJECT_DIR$/src/component.py" />
+        <option value="$PROJECT_DIR$/src/main.py" />
       </list>
     </option>
   </component>
@@ -547,6 +551,7 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -604,6 +609,7 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -661,6 +667,7 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -718,6 +725,7 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -775,6 +783,7 @@
           <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -831,9 +840,10 @@
     <entry file="file://$PROJECT_DIR$/src/polyhedron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="383" column="8" selection-start-line="383" selection-start-column="8" selection-end-line="383" selection-end-column="8" />
+          <caret line="403" column="8" selection-start-line="403" selection-start-column="8" selection-end-line="403" selection-end-column="8" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+            <marker date="1495062007000" expanded="true" signature="12337:15099" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -841,7 +851,7 @@
     <entry file="file://$PROJECT_DIR$/src/polyhedra_generation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -850,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="137.18518">
-          <caret line="346" column="55" selection-start-line="346" selection-start-column="55" selection-end-line="346" selection-end-column="55" />
+        <state vertical-scroll-proportion="-66.111115">
+          <caret line="274" column="29" selection-start-line="274" selection-start-column="29" selection-end-line="274" selection-end-column="29" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <element signature="e#2708#3920#0" expanded="false" />
@@ -861,8 +871,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.3034682">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.783237">
+          <caret line="142" column="39" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>

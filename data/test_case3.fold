@@ -151,11 +151,49 @@
   "file_classes": [
     "singleModel"
   ], 
-  "frame_classes": [
-    "foldedForm"
-  ], 
+  "file_author": "pwgreene", 
   "vertices_coords": [
     [
+      3, 
+      2, 
+      7
+    ], 
+    [
+      3, 
+      2, 
+      9
+    ], 
+    [
+      3, 
+      3, 
+      7
+    ], 
+    [
+      3, 
+      3, 
+      9
+    ], 
+    [
+      7, 
+      2, 
+      7
+    ], 
+    [
+      7, 
+      2, 
+      9
+    ], 
+    [
+      7, 
+      3, 
+      7
+    ], 
+    [
+      7, 
+      3, 
+      9
+    ], 
+    [
       1, 
       1, 
       -1
@@ -274,46 +312,6 @@
       2, 
       0, 
       6
-    ], 
-    [
-      0, 
-      2, 
-      2
-    ], 
-    [
-      0, 
-      2, 
-      3
-    ], 
-    [
-      0, 
-      3, 
-      2
-    ], 
-    [
-      0, 
-      3, 
-      3
-    ], 
-    [
-      8, 
-      2, 
-      2
-    ], 
-    [
-      8, 
-      2, 
-      3
-    ], 
-    [
-      8, 
-      3, 
-      2
-    ], 
-    [
-      8, 
-      3, 
-      3
     ]
   ], 
   "edges_vertices": [
@@ -510,8 +508,46 @@
       27
     ]
   ], 
-  "file_author": "pwgreene", 
+  "frame_classes": [
+    "foldedForm"
+  ], 
   "edges_assignment": [
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
+    "B", 
     "B", 
     "B", 
     "B", 
@@ -561,7 +597,7 @@
     "B", 
     "B"
   ], 
-  "frame_title": "../data/test_case4.fold", 
+  "frame_title": "../data/the_box3.fold", 
   "file_spec": 1, 
   "file_creator": "Python script"
 }

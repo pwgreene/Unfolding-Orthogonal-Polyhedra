@@ -273,16 +273,18 @@ class Component:
     cut_3.append(next_p)
 
     if parent_direction == "+y":
+            #or parent_direction == "+y" and f_0_face.direction == "+z":
       # flip orientation
       new_cut1, new_cut2, new_cut3 = [], [], []
+      y_mid = (self.y + self.y_minus_1)/2.0
       for v in cut_1:
-        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        v_new = np.array([v[0], 2*y_mid - v[1], v[2]])
         new_cut1.append(v_new)
       for v in cut_2:
-        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        v_new = np.array([v[0], 2*y_mid - v[1], v[2]])
         new_cut2.append(v_new)
       for v in cut_3:
-        v_new = np.array([v[0], self.depth - v[1], v[2]])
+        v_new = np.array([v[0], 2*y_mid - v[1], v[2]])
         new_cut3.append(v_new)
       cut_1, cut_2, cut_3 = new_cut1, new_cut2, new_cut3
 
@@ -501,7 +503,7 @@ class Component:
         else:  # -x direction
           f_k_strip_width = abs(f_k_face.vertices[0][2] - f_k_face.vertices[1][2]) / float(len(B2))
         starting_face_index = [j for j in range(len(self.protrusion_path)) if self.protrusion_path[j] == bridge_index].pop()
-        print "f_k", f_k, f_k_strip_width
+
         path_index = starting_face_index
         cur_face_index = self.protrusion_path[path_index]
 
@@ -529,10 +531,16 @@ class Component:
             x = f_k_face.vertices[1][0] + (f_k_strip_width * i) + f_k_strip_width/(num_cuts - 1) * cut_num
           else:
             x = f_k_face.vertices[3][0] - (f_k_strip_width * i) - f_k_strip_width/(num_cuts - 1) * cut_num
-        y = next_p[1]
-        z = next_p[2]
 
-        cut_paths[cut_num].append(np.array([x, y, z]))
+        if cut_num == 0 and bridge_index == f_k:
+          y = bridge_face.vertices[0][0]
+          z = bridge_face.vertices[0][2]
+        else:
+          y = cut_paths[cut_num][-1][1]
+          z = cut_paths[cut_num][-1][2]
+
+
+          cut_paths[cut_num].append(np.array([x, y, z]))
 
         # move down into protrusion along f_k
         if flip_sides:
@@ -666,7 +674,7 @@ class Component:
         cur_face_index = self.protrusion_path[path_index % len(self.protrusion_path)]
 
       f_1_face = self.full_graph.get_V()[f_1]
-      if f_1_face.direction == "+z":
+      if f_1_face.direction == "+z" or f_1_face.direction == "-z":
         f_1_strip_width = abs(f_1_face.vertices[0][0] - f_1_face.vertices[1][0]) / float(num_cuts-1)
       else:  # -x direction
         f_1_strip_width = abs(f_1_face.vertices[0][2] - f_1_face.vertices[1][2]) / float(num_cuts-1)

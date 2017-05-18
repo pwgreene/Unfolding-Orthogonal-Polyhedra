@@ -306,7 +306,7 @@ class Polyhedron(object):
       y_faces = [face for face in all_faces_dict if all_faces_dict[face].in_layer(y)]
       face_subgraph = self.dual_graph.subgraph(c1_z + c2_z + y_faces)
       c2_z_set = set(c2_z)
-      
+
       for face in c1_z:
         layers = [[face]]
         all_faces = [face]
@@ -314,7 +314,7 @@ class Polyhedron(object):
           next_layer = []
           for vertex in layers[-1]:
             connections = face_subgraph.get_connections(vertex)
-            connections = [c for c in connections if c not in all_faces]
+            connections = [c for c in connections if c not in all_faces and self.path_is_straight(face_subgraph.get_vertex(vertex), face_subgraph.get_vertex(c))]
             all_faces.extend(connections)
             if not c2_z_set.isdisjoint(connections):
               for c in connections:
@@ -338,18 +338,38 @@ class Polyhedron(object):
       for i in reversed(xrange(len(layers) - 1)):
         connections = face_subgraph.get_connections(prev)
         for face in layers[i]:
-          if face in connections:
+          if face in connections and self.path_is_straight(face_subgraph.get_vertex(prev), face_subgraph.get_vertex(face)):
             path.insert(0, face)
             prev = face
             break
-      c1_bridge = []
-      c2_bridge = []
+      c1_bridge = [path[0]]
+      c2_bridge = path[1:]
+      '''
       for face in path:
         if face in c1_faces:
           c1_bridge.append(face)
         else:
           c2_bridge.append(face)
+      '''
       return [c1_bridge, c2_bridge]
+
+    # returns common edge between 2 faces
+    def get_common_edge(self, f1, f2):
+      f1_vertices = f1.get_vertices(as_tuple=True)
+      f2_vertices = f2.get_vertices(as_tuple=True)
+      common = []
+      for v in f1_vertices:
+        if v in f2_vertices:
+          common.append(v)
+      return common
+   
+    # returns true if path is straight
+    def path_is_straight(self, f1, f2):
+      common = self.get_common_edge(f1, f2)
+      if common[0][0] == common[1][0]:
+        return False
+      else:
+        return True
 
     def write_to_off(self, out_filename):
         """

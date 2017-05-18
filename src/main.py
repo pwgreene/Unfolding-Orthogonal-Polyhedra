@@ -1,5 +1,7 @@
 from polyhedron import Polyhedron
 import numpy as np
+import sys
+import os
 
 def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
     """
@@ -14,12 +16,16 @@ def unfold_polyhedron(polyhedron, root, bridge_cuts=[]):
         f_0 = root.parent_bridge[-1]
         print "f_0", f_0
         print "bridge:", root.parent_bridge
-        bridge_normal = polyhedron.faces[root.parent_bridge[1]].direction
+        # bridge_normal = polyhedron.faces[root.parent_bridge[1]].direction
+        # bridge_normal = polyhedron.faces[root.parent_bridge[0]].direction
+        parent_bridge_face = polyhedron.faces[root.parent_bridge[0]]
+        f_0_face = polyhedron.faces[f_0]
         # check direction of parent component
-        if bridge_normal == "+y":
-            parent_direction = "+y"
-        else:
+        if parent_bridge_face.center[1] < f_0_face.center[1]:
             parent_direction = "-y"
+        else:
+            parent_direction = "+y"
+        print parent_direction, f_0, root.parent_bridge[-1]
         root.component.unfold_strip_leaf(f_0, parent_direction)
         # bridge_cuts.append(((f_0, root.parent), 1))
         root.f_0 = f_0
@@ -119,9 +125,23 @@ def write_cut_path(paths, filename):
 
 if __name__ == "__main__":
     # p1 = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    p = Polyhedron(filelist=["../data/the_box.fold"])
+    # p = Polyhedron(filelist=["../data/test_case6.fold"])
     # print unfold_polyhedron(p1, p1.unfolding_tree)
-    unfold_polyhedron(p, p.unfolding_tree)
-    print p.unfolding_tree.children[0].children
-    p.write_to_off("../out/poly.off")
-    write_cut_path(gather_cuts(p, p.unfolding_tree), "../out/cuts.txt")
+    # print p.unfolding_tree.children_bridges
+    # unfold_polyhedron(p, p.unfolding_tree)
+    # print p.unfolding_tree.children[0].children
+    # p.write_to_off("../out/poly.off")
+    # write_cut_path(gather_cuts(p, p.unfolding_tree), "../out/cuts.txt")
+    if len(sys.argv) != 2:
+        print "Usage: pass as argument a .fold file containing a orthogonal polyhedron"
+    else:
+        p = Polyhedron(filelist=[sys.argv[1]])
+        unfold_polyhedron(p, p.unfolding_tree)
+        polyhedron_file = "../out/poly.off"
+        cut_file = "../out/cuts.txt"
+        exe_file = "../viewer/build/viewer"
+        p.write_to_off(polyhedron_file)
+        write_cut_path(gather_cuts(p, p.unfolding_tree), cut_file)
+        print "here"
+        os.system("cat %s %s | %s" % (polyhedron_file, cut_file, exe_file))
+
