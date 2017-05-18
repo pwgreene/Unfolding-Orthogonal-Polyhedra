@@ -49,7 +49,7 @@ void GLProgram::updateMaterial(Vector3f diffuseColor,
     glUniform1f(loc, shininess);
     loc = glGetUniformLocation(active_program, "alpha");
     glUniform1f(loc, alpha);
-//    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);	// White Background
+    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);	// White Background
 }
 
 void GLProgram::updateLight(Vector3f pos, Vector3f color) const {

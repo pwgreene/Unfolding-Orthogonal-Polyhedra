@@ -28,10 +28,10 @@ namespace
     // Some constants
     const Vector3f LIGHT_POS(0.0f, 8.0f, 16.0f);
     const Vector3f LIGHT_COLOR(500, 500, 500);
-    const Vector3f MESH_COLOR(0.1f, 0.3f, 1.0f);
+    const Vector3f MESH_COLOR(0.5f, 0.5f, 0.5f);
     const Vector3f MESH_AMBIENT = .3 * MESH_COLOR;
-    const Vector3f PATH_COLOR(0.1f, 1.0f, 0.2f);
-    const Vector3f PATH_AMBIENT = .9 * PATH_COLOR;
+    Vector3f PATH_COLOR(0.0f, 0.0f, 0.0f);
+    Vector3f PATH_AMBIENT = .9 * PATH_COLOR;
     const float ambient_amount = .15;
     
     bool MESH_ON = false;
@@ -354,8 +354,15 @@ namespace
 
             setViewport(window);
             
-            if (MESH_ON)
+            if (MESH_ON) {
+                PATH_COLOR = Vector3f(0.9f, 0.9f, 0.9f);
+                PATH_AMBIENT = .9 * PATH_COLOR;
                 drawMesh();
+            } else {
+                PATH_COLOR = Vector3f(0.0f, 0.0f, 0.0f);
+                PATH_AMBIENT = .9 * PATH_COLOR;
+            }
+            
             drawPath();
 
             // Make back buffer visible

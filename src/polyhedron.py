@@ -392,13 +392,12 @@ class Polyhedron(object):
         print "wrote %s vertices and %s faces to %s" % (nv, nt, out_filename)
 
 if __name__ == "__main__":
-    #p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
-    #c = p.component_graph.get_V()[5]
+    p = Polyhedron(filelist=["../data/test/unit_cube_open.fold", "../data/test/rect_box.fold"])
+    c = p.component_graph.get_V()[5]
     # c.unfold_strip_leaf(11, "-y")
-    # c.unfold_strip_intermediate([13, 15, 14], ["+y", "+y", "+y"], 11, "+y", [4, 4, 2])
-    #c.unfold_strip_root(12, "-y", 2)
-    #p.write_to_off("../out/poly.off")
+    c.unfold_strip_intermediate([13, 15, 14], ["-y", "+y", "-y"], 11, "+y", [2, 2, 1])
+    # c.unfold_strip_root(12, "-y", 2)
+    p.write_to_off("../out/poly.off")
     
     #p = Polyhedron(filelist=["../data/boxes2.fold"])
     #p = Polyhedron(filelist=["../data/the_box.fold"])
-    pass
