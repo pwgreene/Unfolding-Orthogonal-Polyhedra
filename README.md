@@ -10,8 +10,8 @@ to run sample:
 
 
 # NOTE: requires OpenGL. 
-If on windows, you probably need to recompile the viewer. ==================
-Current executable in ./viewer/build is for Mac
+If on windows, you probably need to recompile the viewer. 
+Current executable in ./viewer/build is for Mac.
 Build Instructions for Viewer: (while in ./viewer)
 
 ```
