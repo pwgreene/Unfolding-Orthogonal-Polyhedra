@@ -9,9 +9,10 @@ to run sample:
 2. ```cd python main.py ../data/samples/test_case5.fold```
 
 
-NOTE: requires OpenGL. If on windows, you probably need to recompile the viewer. Current executable in ./viewer/build is for Mac
+NOTE: requires OpenGL. If on windows, you probably need to recompile the viewer. ==================
+Current executable in ./viewer/build is for Mac
 Build Instructions for Viewer: (while in ./viewer)
-==================
+
 $ mkdir build
 $ cd build
 $ cmake ..
